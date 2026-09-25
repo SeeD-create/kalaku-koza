@@ -33,8 +33,7 @@
   }
   connect('[data-line-action]', config.LINE_URL, 'line-status', '講座用の公式LINEへ進みます。', 'line');
 
-  /* 動画はこのページで再生する。VIMEO_ID が未設定のときは、押したときだけ「準備中」を出す。
-     登録が済んだ・再生できたように見せる処理は置かない。 */
+  
   const vid = String(config.VIMEO_ID || '').replace(/\D/g, '');
   const frame = document.getElementById('movie-frame');
   const movieStatus = document.getElementById('movie-status');

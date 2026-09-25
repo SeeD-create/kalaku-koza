@@ -1,56 +1,32 @@
 @charset "utf-8";
-/* =========================================================
-   ボタニカルビューティデザイナー養成講座 LP
-   共通スタイル（A案：現行 / B案：新カンプ）
-   Lスタジオ 2026-08
-   ---------------------------------------------------------
-   ★2026-08-10 カラー再設計（先方訂正：8/9の深緑 旧深緑 は取り消し）
-     「明るく瑞々しく、高級感のあるグリーン」。基準 #4F8F35 ／ 明るい部分 #86B94A。
-     ---------------------------------------------------------
-     基本背景  白〜アイボリー      #FFFDF8 / #FFFFFF … 面積を最大にする
-     区切り地  ごく薄いアイボリー  #FBF7EC
-     グリーン  基準               #4F8F35 … 見出し・アイコン・チェック・ポイント
-               濃い版             #3F7429 … 小さい緑文字（白地で 5.6:1 を確保）
-               最濃               #33632A … フッターのみ
-               明るい版           #86B94A … CTAグラデーションの上端・装飾
-               細罫・カード枠     #BFD9A0
-               ごく薄い緑地       #EEF6E2 … チェック／ポイントの面
-     ゴールド                     #C3A45F … 細線・区切り・枠のみ（面で塗らない）
-     文字      #20301C（見出し） / #2C3A27（本文） / #6B7765（補助）
-   ---------------------------------------------------------
-   ※深緑のベタ塗り面は全廃。ベタで塗るのは
-     「CTAボタン」「言い切りの帯」「ポイント枠(.small-close)」「フッター」だけ。
-     ほかは全部 白／アイボリー地＋細罫＋余白で区切る。
-   ※明るいグリーン #86B94A の上に白文字を置かない（白との比 2.3:1 で読めない）。
-     白文字を乗せてよいのは #4F8F35 以上の濃さ（5.3:1）。
-   ========================================================= */
+
 
 :root{
-  /* ---- ベース（白〜アイボリー） ---- */
-  --ivory:#FFFDF8;      /* 基本背景 */
-  --paper:#FFFFFF;      /* カード・表の白 */
-  --beige:#FBF7EC;      /* 区切りのアイボリー */
+  
+  --ivory:#FFFDF8;      
+  --paper:#FFFFFF;      
+  --beige:#FBF7EC;      
 
-  /* ---- グリーン ---- */
-  --forest:#4F8F35;     /* 基準グリーン（塗り・アイコン・大きな見出し） */
-  --forest-d:#3F7429;   /* 濃い版（小さい緑文字・ホバー・グラデ下端） */
-  --forest-dd:#33632A;  /* 最濃（フッターのみ） */
-  --forest-lt:#86B94A;  /* 明るい版（CTAグラデ上端）※文字色には使わない */
-  /* 白文字を乗せてよい最も明るいグリーン。#46832E で白と 4.6:1（本文サイズでもAA） */
+  
+  --forest:#4F8F35;     
+  --forest-d:#3F7429;   
+  --forest-dd:#33632A;  
+  --forest-lt:#86B94A;  
+  
   --green-fill:#46832E;
   --green-fill-d:#37692A;
-  --sage:#BFD9A0;       /* 細罫・カード枠 */
-  --sage-lt:#EEF6E2;    /* ごく薄い緑地（チェック／ポイントの面） */
+  --sage:#BFD9A0;       
+  --sage-lt:#EEF6E2;    
 
-  /* ---- ゴールド（細線とアクセントのみ） ---- */
+  
   --gold:#C3A45F;
-  --gold-lt:#EFE4CB;    /* さらに薄い金（枠線用・面には使わない） */
+  --gold-lt:#EFE4CB;    
 
-  /* ---- 文字 ---- */
-  --ink:#20301C;        /* 見出し */
-  --body:#2C3A27;       /* 本文 */
-  --mute:#6B7765;       /* 補助文字（白地で 4.6:1） */
-  --line:#EDE6D6;       /* 罫線 */
+  
+  --ink:#20301C;        
+  --body:#2C3A27;       
+  --mute:#6B7765;       
+  --line:#EDE6D6;       
 
   --radius:14px;
   --maxw:1080px;
@@ -67,10 +43,10 @@ body{
   font-size:16px;
   line-height:1.9;
   letter-spacing:.02em;
-  line-break:strict;          /* 行頭の「ー」「っ」などを禁止＝日本語の禁則処理 */
+  line-break:strict;          
   word-break:normal;
   -webkit-font-smoothing:antialiased;
-  padding-bottom:88px; /* sticky CTA分 */
+  padding-bottom:88px; 
 }
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
@@ -80,56 +56,49 @@ a{color:inherit}
   font-weight:600;
 }
 
-/* ---------- レイアウト ---------- */
+
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 .narrow{max-width:760px;margin:0 auto}
-/* 2026-08-09 外部レビュー⑩：通常セクションの上下余白を PC64 / スマホ48 に統一。
-   例外はFVと動画セクションだけ。意味のない80〜150px級の空白を作らない。 */
+
 section{padding:48px 0}
 @media(min-width:900px){ section{padding:64px 0} }
 
-/* 地の色は3種類だけ。いずれも明るい面で、濃色のベタ塗りは使わない。
-   2026-08-10 .forest は「深緑のベタ塗り」→「白からごく薄いグリーンへのグラデーション」に変更。
-   クラス名は3ページで多数使っているのでそのまま（意味だけが変わった）。 */
+
 .beige{background:var(--beige)}
 .forest{background:linear-gradient(180deg,#FFFFFF 0%,var(--sage-lt) 100%);color:var(--body)}
 .forest h2,.forest h3{color:var(--ink)}
-/* 薄いグリーン地の上に置くカードは白にして面を立てる（同系色で沈むのを防ぐ） */
+
 .forest .check{background:var(--paper)}
-/* セクションの区切りは罫線で。ベタ面を増やさないための基本装備 */
+
 .ruled{border-top:1px solid var(--line)}
 .ruled-b{border-bottom:1px solid var(--line)}
 
-/* ---------- 装飾素材（assets/img/deco/） 2026-08-09 ----------
-   カラーガイドの「アクセント背景＝植物・光の写真を薄く重ねて抜け感を出す」に対応。
-   地の色は変えず、質感と光だけを足す。文字の可読性を落とさない濃度に留めること。
-   ※url() は style.css からの相対＝ img/deco/... が正しい（HTML基準にすると404になる） */
+
 .deco{position:relative;isolation:isolate}
 .deco > *{position:relative;z-index:1}
 .deco::after{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background-repeat:no-repeat;
 }
-/* リネンの地の質感。生成りベージュのセクションに重ねる */
+
 .deco-linen::after{
   background-image:url(img/deco/deco-texture.jpg);
   background-size:460px auto;background-repeat:repeat;
   opacity:.42;mix-blend-mode:multiply;
 }
-/* 窓から入った葉の影。アイボリー地に抜け感を足す */
+
 .deco-shadow::after{
   background-image:url(img/deco/deco-leaf-shadow.jpg);
   background-size:cover;background-position:left top;
   opacity:.5;mix-blend-mode:multiply;
 }
-/* 深緑のベタ面に奥行きだけ足す（色は足さない） */
+
 .deco-green::after{
   background-image:url(img/deco/deco-blur-green.jpg);
   background-size:cover;background-position:center;
   opacity:.16;mix-blend-mode:screen;
 }
-/* 切り抜きの小枝。隅に置く飾りなので ::before を使う（::afterは上の地と競合する）
-   .deco と併用しない場合もあるので、単体で成立するよう position をここでも持たせる */
+
 .deco-leaf{position:relative}
 .deco-leaf > *{position:relative;z-index:1}
 .deco-leaf::before{
@@ -142,9 +111,7 @@ section{padding:48px 0}
 @media(min-width:900px){ .deco-leaf::before{right:-26px;bottom:-24px} }
 
 .sec-head{text-align:center;margin-bottom:28px}
-/* 2026-08-10 小見出し（EYEBROW）の文字はグリーンへ。
-   ゴールドは前後の細線だけに残す＝「ゴールドは細線・アクセント程度」の指示どおり。
-   （ゴールド文字は白地で 2.4:1 しか出ず、12pxでは実機で読めない） */
+
 .sec-head .eyebrow{
   display:inline-block;font-size:12px;letter-spacing:.18em;color:var(--forest-d);
   margin-bottom:10px;
@@ -160,23 +127,17 @@ section{padding:48px 0}
 @media(min-width:900px){ .sec-head h2{font-size:32px} }
 .sec-head h2 em{font-style:normal;color:var(--forest);border-bottom:2px solid var(--gold);padding-bottom:2px}
 .sec-head p{margin:14px 0 0;font-size:15px;color:var(--mute)}
-/* 2026-08-10 .forest が明るい地になったので、中の文字は通常色に戻す（白文字を使わない） */
+
 .forest .sec-head .eyebrow{color:var(--forest-d)}
 .forest .sec-head h2{color:var(--ink)}
 .forest .sec-head h2 em{color:var(--forest);border-bottom-color:var(--gold)}
 .forest .sec-head p{color:var(--mute)}
-/* 言い切りの帯の小見出しは白（ゴールド文字はグリーン地で2.0:1＝読めない）。実体は下の .statement 節。 */
+
 
 .leafline{display:block;margin:0 auto 14px;width:46px;height:auto;opacity:.75}
 
-/* ---------- 写真スロット ---------- */
-/* 画像を入れるときは class に has-img を足し、
-   style="background-image:url('assets/img/xxx.jpg')" を書く。
-   未設定でも下地の植物グラデーションが出るので崩れない。
-   ※url()をCSS変数(--img)経由で渡すと、HTMLではなくCSSファイル基準で
-     パス解決されて404になる。必ずbackground-imageを直接書くこと。
-   ※実写差し替えは data-photo-slot="01_counseling" を付けておけば
-     assets/photos.js の1行を直す（またはファイルを置く）だけで入れ替わる。 */
+
+
 .photo{
   position:relative;overflow:hidden;border-radius:var(--radius);
   background-color:var(--beige);
@@ -195,15 +156,13 @@ section{padding:48px 0}
 .ar-3-4{aspect-ratio:3/4}
 .ar-3-2{aspect-ratio:3/2}
 
-/* ---------- ヒーロー ---------- */
+
 .hero{
   position:relative;
   background:var(--ivory);
   padding:0 0 40px;overflow:hidden;
 }
-/* 2026-08-10 バッジは明るいグリーンのグラデーション。
-   ⚠️白文字は #4F8F35 より薄い緑に乗せない（#86B94A 上では 2.3:1 で読めない）ので、
-     グラデーションは基準グリーン → 濃い版 の範囲に収める。 */
+
 .hero-badge{
   display:inline-block;background:linear-gradient(135deg,var(--green-fill) 0%,var(--green-fill-d) 100%);
   color:#fff;
@@ -224,14 +183,14 @@ section{padding:48px 0}
   margin-top:2px;border-radius:2px;
 }
 .hero .lead{margin:18px 0 0;font-size:16px;color:var(--body)}
-/* 16px級の緑文字は基準グリーン(3.9:1)だと足りないので濃い版(5.6:1)を使う */
+
 .hero .lead b{color:var(--forest-d)}
 .hero .mark{
   background:linear-gradient(transparent 62%, var(--sage-lt) 62%);
   color:var(--forest-d);font-weight:700;
 }
 .hero-photo{margin-top:24px;position:relative}
-/* PCでは丸バッジの代わりに、文字カラムの中に置く帯（写真の人物に重ならないように） */
+
 .hero-pill{display:none}
 .hero-seal{
   position:absolute;top:12px;right:12px;width:106px;height:106px;z-index:2;
@@ -246,8 +205,7 @@ section{padding:48px 0}
   display:block;color:var(--forest-d);font-size:12px;line-height:1.45;margin-top:3px;
   border-top:1px solid var(--gold);padding-top:3px;
 }
-/* 2026-08-09 写真によって空いている側が違うので、左に出す版を用意した。
-   カット1（カウンセリング）は撮影指示書で「左半分を空ける」としているため、Aは左固定。 */
+
 .hero-seal.at-left{left:12px;right:auto}
 @media(min-width:900px){
   .hero h1{font-size:48px;line-height:1.35}
@@ -257,11 +215,8 @@ section{padding:48px 0}
   .hero-seal{width:132px;height:132px;font-size:12px;top:18px;right:18px}
   .hero-seal.at-left{left:18px;right:auto}
 
-  /* PC：ヒーローを全幅の背景写真にして、左の余白に文字を置く
-     （背景画像のURLは各HTMLの<head>内 <style> で指定＝相対パスをHTML基準にするため） */
-  /* 2026-08-09 ヒーロー写真を「左半分をアイボリーに溶かした版」に差し替えた。
-     溶けは画像側に焼き込んであるので、position は left にして、
-     上に重ねるベールは保険程度まで薄くする（重ねすぎると写真が白く飛ぶ）。 */
+  
+  
   .hero.hero-wide{background-size:cover;background-position:left center;background-repeat:no-repeat}
   .hero.hero-wide::before{
     content:"";position:absolute;inset:0;z-index:0;
@@ -271,23 +226,22 @@ section{padding:48px 0}
   }
   .hero.hero-wide .hero-badge,
   .hero.hero-wide .hero-inner{position:relative;z-index:1}
-  /* 2026-08-09 外部レビュー④：カンプ①に合わせ、テキスト領域45% / 写真領域55%。
-     コンテナも1080→1200に広げて、H1を48pxにしても文字が窮屈にならないようにする。 */
+  
   .hero.hero-wide .hero-inner{padding-top:48px;padding-bottom:64px;max-width:1200px}
   .hero.hero-wide .hero-grid{grid-template-columns:minmax(0,.45fr) minmax(0,.55fr);gap:36px}
   .hero.hero-wide h1{font-size:48px;line-height:1.35}
-  /* テキスト列が45%＝約500pxなので、強調文字は1.32emまで（startの「植物美容クラブ」が7文字） */
+  
   .hero.hero-wide h1 .big{font-size:1.32em;letter-spacing:.04em}
-  /* 右カラムの写真はPCでは背景に統合。要素は残して認定シールの土台にする */
+  
   .hero.hero-wide .hero-photo{
     position:absolute;inset:0;margin:0;border-radius:0;aspect-ratio:auto;
     background-image:none!important;background-color:transparent;
     pointer-events:none;z-index:2;
   }
   .hero.hero-wide .hero-photo::after{display:none}
-  /* 丸バッジは写真の人物に重なるのでPCでは出さず、文字カラムの帯に置き換える */
+  
   .hero.hero-wide .hero-seal{display:none}
-  /* 写真の右上が空いているページだけシールを出す（startは窓＝空きあり。Aは人物の顔が来るので非表示のまま） */
+  
   .hero.hero-wide .hero-seal.show-pc{display:flex;top:26px;right:26px;width:138px;height:138px}
   .hero.hero-wide .hero-pill{
     display:inline-flex;align-items:center;gap:7px;margin:0 0 18px;
@@ -297,12 +251,12 @@ section{padding:48px 0}
   }
   .hero.hero-wide .hero-pill b{color:var(--forest-d)}
 
-  /* PCのヒーローだけ、CTAを見出しの左端に揃えて少し長くする（中央寄せだと浮く） */
+  
   .hero .btn{margin-left:0;margin-right:auto;max-width:560px}
   .hero .btn-sub{text-align:left;padding-left:4px}
 }
 
-/* ---------- 数値バッジ ---------- */
+
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:26px}
 @media(min-width:760px){ .stats{grid-template-columns:repeat(4,1fr);gap:16px} }
 .stat{
@@ -315,20 +269,20 @@ section{padding:48px 0}
 .stat .vl small{font-size:.62em}
 .note{font-size:12.5px;color:var(--mute);text-align:center;margin-top:12px;line-height:1.7}
 
-/* ---------- 悩みチェック（アイボリー地／ベタ塗りをやめた） ---------- */
+
 .checks{display:grid;gap:12px}
 @media(min-width:760px){ .checks{grid-template-columns:repeat(2,1fr);gap:14px} }
-/* 2026-08-09 白地→セージ地に振り替え。ゴールド・セージの面積をご指定の10%に上げるため。 */
+
 .check{
   display:flex;gap:12px;align-items:flex-start;
   background:var(--sage-lt);border:1px solid var(--sage);
   border-radius:10px;padding:14px 16px;font-size:15px;line-height:1.7;
   color:var(--ink);
 }
-/* 2026-08-10 チェックマークは基準グリーン。薄い緑地の上でも確実に見えるようにする */
+
 .check .tick{flex:0 0 20px;width:20px;height:20px;margin-top:3px;color:var(--forest)}
 
-/* ---------- 原因 ---------- */
+
 .cause{display:grid;gap:14px;margin-top:8px}
 @media(min-width:760px){ .cause{grid-template-columns:repeat(3,1fr)} }
 .cause .c{
@@ -342,7 +296,7 @@ section{padding:48px 0}
 }
 @media(min-width:900px){ .turn{font-size:22px} }
 
-/* ---------- クラブ紹介（4本柱） ---------- */
+
 .pillars{display:grid;gap:16px}
 @media(min-width:760px){ .pillars{grid-template-columns:repeat(2,1fr);gap:22px} }
 .pillar{
@@ -358,9 +312,7 @@ section{padding:48px 0}
 .pillar h3{margin:0 0 8px;font-size:18px;color:var(--forest-d);line-height:1.5}
 .pillar p{margin:0;font-size:14.5px;line-height:1.85}
 
-/* ---------- 動画ブロック ----------
-   2026-08-09 深緑のベタ面 → 生成りベージュの薄い地に変更（平野さん指示）。
-   写真は上に薄いベージュを重ねて透かす。文字は通常の本文色。 */
+
 .videoblock{background:var(--beige);color:var(--body)}
 .videoblock h2{color:var(--ink)}
 .vgrid{display:grid;gap:24px}
@@ -389,7 +341,7 @@ section{padding:48px 0}
 .vlist .tick{flex:0 0 19px;width:19px;height:19px;margin-top:4px;color:var(--forest)}
 .vmeta{margin-top:18px;font-size:13px;color:var(--mute);line-height:1.8}
 
-/* ---------- 学ぶ内容 ---------- */
+
 .learn{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
 .learn .l:last-child{grid-column:1 / -1}
 @media(min-width:760px){
@@ -403,18 +355,18 @@ section{padding:48px 0}
 .learn .l .ico{width:34px;height:34px;margin:0 auto 10px;color:var(--forest)}
 .learn .l p{margin:0;font-size:13.5px;line-height:1.65;color:var(--ink)}
 
-/* ---------- セクション背景に写真を敷く ---------- */
+
 .bgphoto{position:relative;background-size:cover;background-position:center;background-repeat:no-repeat}
 .bgphoto::before{content:"";position:absolute;inset:0;z-index:0}
 .bgphoto>*{position:relative;z-index:1}
-/* 動画ブロックは薄いアイボリー。写真の上に白〜アイボリーを重ねて透かす。 */
+
 .videoblock.bgphoto::before{background:linear-gradient(160deg,rgba(251,247,236,.90) 0%,rgba(255,253,248,.93) 100%)}
-/* 明るいセクションに写真をごく薄く敷く（アイボリー地を保つ） */
+
 .tint.bgphoto::before{background:linear-gradient(180deg,rgba(255,253,248,.94),rgba(251,247,236,.95))}
 .soft.bgphoto::before{background:linear-gradient(180deg,rgba(255,253,248,.955),rgba(255,253,248,.93))}
 .cta-band.bgphoto::before{background:linear-gradient(180deg,rgba(255,253,248,.95),rgba(251,247,236,.94))}
 
-/* ---------- 全幅の帯写真 ---------- */
+
 .band{
   height:clamp(170px,26vw,300px);
   background:var(--beige) center/cover no-repeat;
@@ -425,10 +377,8 @@ section{padding:48px 0}
   background:linear-gradient(180deg,rgba(255,253,248,.55) 0%,rgba(255,253,248,0) 22%,rgba(251,247,236,0) 78%,rgba(251,247,236,.6) 100%);
 }
 
-/* ---------- 言い切りの帯（グリーンのベタ面／ページ唯一の“色で言い切る”場所） ---------- */
-/* 2026-08-10 深緑ベタ → 明るいグリーンのグラデーションへ。
-   ページ全体は白〜アイボリーなので、色の面はここ・CTAボタン・ポイント枠・フッターだけ。
-   グラデーションの一番明るいところでも #4F8F35（白文字 5.3:1）を下回らせない。 */
+
+
 .statement{
   background:linear-gradient(135deg,var(--green-fill) 0%,var(--green-fill-d) 100%);
   color:#fff;text-align:center;padding:46px 0;
@@ -442,7 +392,7 @@ section{padding:48px 0}
   .statement p{font-size:26px;line-height:1.85}
 }
 
-/* ---------- ステップ ---------- */
+
 .steps{display:grid;gap:14px;counter-reset:st}
 @media(min-width:860px){ .steps{grid-template-columns:repeat(3,1fr)} }
 .step{
@@ -456,29 +406,28 @@ section{padding:48px 0}
 }
 .step h3{margin:6px 0 8px;font-size:17px;color:var(--forest-d)}
 .step p{margin:0;font-size:14.5px;line-height:1.8}
-/* 2026-08-10 深緑ベタのカード → 白いカード＋グリーンの細枠。
-   .green のクラス名は3ページで使っているので残し、意味だけ「グリーンで縁取る流れ」に変えた。 */
+
 .steps.green .step{background:var(--paper);border-color:var(--sage)}
 .steps.green .step::before{background:linear-gradient(135deg,var(--green-fill) 0%,var(--green-fill-d) 100%);color:#fff;font-weight:700}
 .steps.green .step h3{color:var(--forest-d)}
 .steps.green .step p{color:var(--body)}
-/* 薄いグリーン地のセクションの中でもカードは白のまま（面を立てるため） */
+
 .forest .steps.green .step{background:var(--paper);border-color:var(--sage)}
 
-/* ---------- 対象 ---------- */
+
 .fit{display:grid;gap:16px}
 @media(min-width:760px){ .fit{grid-template-columns:repeat(2,1fr);gap:22px} }
 .fit .box{border-radius:var(--radius);padding:24px 22px;background:var(--paper);height:100%}
-/* 2026-08-10 「向いている方」はゴールドの面 → ごく薄いグリーンの面へ（ゴールドは細線だけに戻す） */
+
 .fit .yes{border:1px solid var(--sage);background:var(--sage-lt)}
 .fit .no{border:1px solid var(--line)}
 .fit h3{margin:0 0 12px;font-size:17px}
 .fit .yes h3{color:var(--forest-d)}
-.fit .no h3{color:var(--body)}  /* 明るい緑(--forest-lt)は白地で2.3:1＝文字に使わない */
+.fit .no h3{color:var(--body)}  
 .fit ul{margin:0;padding-left:1.15em}
 .fit li{font-size:14.5px;line-height:1.9;margin-bottom:4px}
 
-/* ---------- 講座概要表 ---------- */
+
 .spec{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .spec th,.spec td{padding:14px 16px;font-size:14.5px;text-align:left;border-bottom:1px solid var(--line);line-height:1.8}
 .spec th{width:32%;background:var(--sage-lt);color:var(--forest-d);font-weight:600;white-space:nowrap}
@@ -489,7 +438,7 @@ section{padding:48px 0}
   .spec td{padding-top:2px;border-bottom:1px solid var(--line)}
 }
 
-/* ---------- 声 ---------- */
+
 .voices{display:grid;gap:16px}
 @media(min-width:860px){ .voices{grid-template-columns:repeat(3,1fr)} }
 .voice{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px}
@@ -499,7 +448,7 @@ section{padding:48px 0}
 .voice .who span{font-size:12px;color:var(--mute)}
 .voice p{margin:0;font-size:14.5px;line-height:1.85}
 
-/* ---------- FAQ ---------- */
+
 .faq{border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line);background:var(--paper)}
 .faq summary{
@@ -515,8 +464,8 @@ section{padding:48px 0}
 .faq details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
 .faq .a{padding:0 18px 20px;font-size:14.5px;line-height:1.9;color:var(--body)}
 
-/* ---------- CTA ---------- */
-/* 最終CTAは白〜アイボリー地。色の面で囲わない（白い余白を多くする方針） */
+
+
 .cta-band{
   background:var(--ivory);
   color:var(--ink);text-align:center;
@@ -525,19 +474,14 @@ section{padding:48px 0}
 .cta-band h2{margin:0 0 8px;font-size:22px;line-height:1.6;color:var(--ink)}
 @media(min-width:900px){ .cta-band h2{font-size:30px} }
 .cta-band p{margin:0 auto;max-width:640px;font-size:15px;color:var(--body)}
-/* 2026-08-09 ゴールドの線はそのまま、文字だけ深緑に（アイボリー地で読めるようにする） */
+
 .freetag{
   display:inline-block;background:transparent;color:var(--forest-d);
   border:1px solid var(--gold);border-radius:30px;
   font-size:13px;letter-spacing:.08em;padding:5px 20px;margin-bottom:14px;
 }
 
-/* ---- メインCTA＝明るいグリーンのグラデーション（2026-08-10 先方ご指定） ----
-   上端 #8ABF4E（明るい部分）→ 40%で #569737 →下端 #3F7A29。
-   ⚠️白い文字が乗るのは高さの35〜65%あたり。そこが #4F8F35 相当（白と 3.6〜4.3:1）に
-     なるよう、明るい #86B94A は上端の“ツヤ”だけに使い、面の大半は基準グリーンに保つ。
-     さらに text-shadow を薄く敷いて実機での可読性を確保している。
-   ⚠️ここを「全面 #86B94A」にすると白文字が 2.3:1 になり読めなくなる。 */
+
 .btn{
   display:flex;align-items:center;justify-content:center;gap:10px;
   width:100%;max-width:520px;margin:22px auto 0;
@@ -552,36 +496,35 @@ section{padding:48px 0}
 .btn:active{transform:translateY(0);filter:brightness(.97);box-shadow:0 6px 16px rgba(79,143,53,.32)}
 .btn:focus-visible{outline:3px solid var(--forest-d);outline-offset:3px}
 .btn .li{width:26px;height:26px;flex:0 0 26px}
-/* ボタン右端の丸矢印 */
+
 .btn .arw{
   width:26px;height:26px;flex:0 0 26px;margin-left:2px;border-radius:50%;
   background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;
 }
 .btn .arw svg{width:13px;height:13px}
-/* .green は旧LINEブランド緑。クラス名は互換のため残し、見た目はメインCTAと同じ。 */
+
 .btn.green{background:linear-gradient(165deg,#8ABF4E 0%,#569737 40%,#3F7A29 100%)}
-/* サブボタン＝ゴールドの細線（塗らない）。ゴールドはここと枠線・区切りだけに使う。
-   文字までゴールドにすると白地で1.9:1しか出ないので、文字は濃いグリーン。 */
+
 .btn.gold{
   background:transparent;color:var(--forest-d);border:1.5px solid var(--gold);
   box-shadow:none;text-shadow:none;font-size:17px;padding:16px 22px;
 }
 .btn.gold:hover{background:rgba(195,164,95,.10);box-shadow:none;filter:none;color:var(--forest-d)}
 .btn.gold .arw{background:rgba(195,164,95,.20)}
-/* スマホ幅ではボタン文字が2行に折れるので1段下げる */
+
 @media(max-width:430px){ .btn{font-size:17px;padding:17px 16px;gap:8px} .btn.gold{font-size:15.5px} }
 .btn-sub{margin:12px 0 0;font-size:13px;color:var(--mute);line-height:1.8;text-align:center}
 .btn-sub.after{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
 .ul{color:var(--forest-d);text-decoration:underline;text-underline-offset:3px;font-weight:700}
 .ul:hover{color:var(--forest)}
 .cta-band .btn-sub{color:var(--mute)}
-/* 2026-08-10 .forest が明るい地になったので、白文字への差し替えは全て不要になった */
+
 .forest .btn-sub{color:var(--mute)}
 .forest .btn-sub.after{border-top-color:var(--line)}
 .forest .ul{color:var(--forest-d)}
 .forest .ul:hover{color:var(--forest)}
 
-/* ---------- 固定CTA ---------- */
+
 .sticky{
   position:fixed;left:0;right:0;bottom:0;z-index:60;
   background:rgba(255,253,248,.97);backdrop-filter:blur(6px);
@@ -592,9 +535,8 @@ section{padding:48px 0}
 .sticky.show{transform:translateY(0)}
 .sticky .btn{margin:0 auto;padding:15px 18px;font-size:17px;max-width:520px}
 
-/* ---------- フッター ---------- */
-/* 2026-08-10 フッターだけは締めに濃いグリーンを残す（#33632A）。
-   ページ内で唯一の濃い面。文字の不透明度は 5:1 を切らないところまで上げてある。 */
+
+
 footer{background:var(--forest-dd);color:rgba(255,255,255,.80);padding:34px 0 30px;font-size:12.5px;line-height:2}
 footer a{color:rgba(255,255,255,.92);text-decoration:underline;text-underline-offset:3px}
 footer .brand{color:#fff;font-size:15px;margin-bottom:8px}
@@ -602,13 +544,13 @@ footer .links{margin-top:14px}
 footer .links a{margin-right:16px;display:inline-block}
 footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 
-/* ---------- 出現アニメ ---------- */
-/* JSが動いたときだけ隠す。JS無効・エラー時は最初から見えている状態を保つ */
+
+
 .js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .js .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){ .js .rv{opacity:1;transform:none;transition:none} }
 
-/* ---------- 切替リンク（もう一方のLPへ） ---------- */
+
 .switch{background:var(--beige);text-align:center;padding:26px 0}
 .switch p{margin:0 0 10px;font-size:14.5px;color:var(--ink)}
 .switch a{
@@ -618,16 +560,9 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 }
 .switch a:hover{background:rgba(195,164,95,.12)}
 
-/* =========================================================
-   B案（先方カンプ① S__84508696 準拠・2026-08-09 作り直し）専用パーツ
-   ---------------------------------------------------------
-   A案と同じパレット・同じ計測タグを使う。
-   2026-08-10 カラー訂正後は、色のベタ面は
-   「CTAボタン」「言い切りの帯」「ポイント枠(.small-close)」「フッター」だけ。
-   ほかは白〜アイボリーの地に、グリーンの見出し・チェック・細枠で色を置く。
-   ========================================================= */
 
-/* --- ① FV --- */
+
+
 .bhero{position:relative;background:var(--ivory);overflow:hidden;padding:0 0 34px}
 .bhero .eyebrow-bar{
   display:inline-block;background:linear-gradient(135deg,var(--green-fill) 0%,var(--green-fill-d) 100%);
@@ -637,15 +572,14 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 .bhero h1{margin:16px 0 0;font-size:30px;line-height:1.35;color:var(--ink)}
 .bhero h1 span{color:var(--forest)}
 .bhero .lead{margin:16px 0 0;font-size:15px;line-height:1.85;color:var(--body)}
-/* 2026-08-10 ブランド行のゴールド文字は白地で2.4:1＝読めないのでグリーンに。
-   ゴールドは下の枠線・細線側に残す。 */
+
 .bhero .brand-line{
   margin:20px 0 0;font-size:12.5px;letter-spacing:.16em;color:var(--forest-d);
 }
 .bhero .brand-line b{display:block;font-size:16.5px;letter-spacing:.04em;color:var(--forest);margin-top:2px}
 .bhero-photo{margin-top:20px;position:relative}
 
-/* 円形バッジ3つ（カンプ①の葉のリース風の囲み） */
+
 .bmerits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px;max-width:430px}
 .bmerit{
   position:relative;aspect-ratio:1/1;border-radius:50%;
@@ -653,16 +587,10 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   display:flex;align-items:center;justify-content:center;text-align:center;padding:0 6px;
 }
 .bmerit span{font-size:11.5px;line-height:1.5;color:var(--forest-d);letter-spacing:0}
-/* 2026-08-10 平野さんだめ出し：円の左右に付けていた葉の装飾（::before / ::after の
-   インラインSVG・麦の穂状）を削除。円・枠線・文字・配置はそのまま。
-   葉は position:absolute だったので、消してもレイアウトは動かない
-   （実測：円98px・間隔18px・FV高901px・FV内CTA 766/832px とも変化なし）。
-   同じ葉のSVGは右上の丸バッジ .bseal でも使っており、そちらは残している。 */
+
 @media(min-width:520px){ .bmerit span{font-size:12.5px} }
 
-/* 右上の丸バッジ（カンプ①）。スマホは写真の右上、PCは文字カラム外＝ヒーロー右上。
-   ⚠️A案では「顔に重なる」として撤去したが、B案はカンプ①の指定でここに置いている。
-     人物に重なるようなら、この .bseal を display:none にするだけで消せる。 */
+
 .bseal{
   position:absolute;top:12px;right:12px;width:104px;height:104px;z-index:3;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -675,18 +603,14 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   display:block;font-size:11.5px;line-height:1.45;margin-top:3px;white-space:nowrap;
   border-top:1px solid var(--gold);padding-top:3px;
 }
-/* 2026-08-10 丸バッジ .bseal の左右に付けていた葉2本（::before / ::after の
-   インラインSVG）も平野さん判断で削除。バッジ本体・丸・枠線・文字・位置・サイズは無変更。
-   position:absolute だったのでレイアウトは動かない。
-   これで葉のSVGは全ページで未使用になったため、上の説明コメントごと掃除した。 */
-/* スマホの写真（01_counseling_mob）は右に人物がいるので、バッジは左上に置く。
-   PCの全幅背景では右上が空くので、下の @media で右に戻す。 */
+
+
 @media(max-width:899px){ .bseal{left:12px;right:auto} }
 
 @media(min-width:900px){
   .bhero{padding-bottom:0}
   .bhero.hero-wide{background-size:cover;background-position:left center;background-repeat:no-repeat}
-  /* 左半分は必ず読めるように。写真が差し替わっても文字が乗る側を守る */
+  
   .bhero.hero-wide::before{
     content:"";position:absolute;inset:0;z-index:0;
     background:linear-gradient(90deg,
@@ -694,19 +618,16 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
       rgba(255,253,248,.12) 52%, rgba(255,253,248,0) 66%);
   }
   .bhero .eyebrow-bar,.bhero .bhero-inner{position:relative;z-index:1}
-  /* 2026-08-09 修正：ここに max-width:600px を置くと .wrap の margin:0 auto と噛み合って
-     テキスト列がビューポート中央（＝写真の顔の上）に来ていた。
-     外枠はA案と同じ1080の中央寄せのまま、中身だけ左半分に収める。 */
-  /* 2026-08-09 外部レビュー④：テキスト領域45% / 写真領域55%。
-     外枠を1200pxに広げ、文字は左から560pxまで＝残りを写真に明け渡す。 */
+  
+  
   .bhero .bhero-inner{padding-top:44px;padding-bottom:60px;max-width:1200px}
   .bhero .bhero-inner > *:not(.bhero-photo):not(.bmerits){max-width:560px}
-  /* ボタンと注記も左端に揃える（.btn の margin:auto が効くと中央＝写真の上に来る） */
+  
   .bhero .bhero-inner .btn{max-width:520px;margin-left:0;margin-right:0}
   .bhero .bhero-inner .btn-sub{text-align:left}
   .bhero h1{font-size:48px;line-height:1.35}
   .bhero .lead{font-size:16px}
-  /* 写真そのものは背景に統合。要素は残して右上の丸バッジの土台にする */
+  
   .bhero.hero-wide .bhero-photo{
     position:absolute;inset:0;margin:0;border-radius:0;aspect-ratio:auto;
     background-image:none!important;background-color:transparent;
@@ -718,10 +639,8 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   .bmerits{max-width:470px;gap:20px}
 }
 
-/* --- ② 講座説明動画（アイボリー地／カンプ①）--- */
-/* 2026-08-09 外部レビュー①：動画がこのページの唯一のゴール。
-   左のチェックリストを280px固定に落とし、動画を右カラムいっぱいの16:9＝主役にする。
-   セクション幅も1120pxまで広げる。⑩の余白統一の例外＝こことFVだけ。 */
+
+
 .vsec{background:var(--ivory);padding:52px 0}
 .vsec .vgrid{display:grid;gap:22px}
 @media(min-width:900px){
@@ -739,11 +658,11 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 .vsec .vlist .tick{flex:none;width:14px;height:14px;margin:0;color:var(--forest)}
 .vsec .vlead{margin:20px 0 0;font-size:14.5px;line-height:1.9;color:var(--body)}
 .vsec .vfee{margin:10px 0 0;font-size:12.5px;line-height:1.7;color:var(--mute);text-align:right}
-/* lp.js が VIMEO_ID 未設定のときに差し込む「準備中」の注記 */
+
 .vsec .vnote{color:var(--mute);text-align:right}
 .vsec .vframe{border:1px solid var(--sage)}
 @media(max-width:899px){
-  /* スマホは「見出し → 動画 → 注意書き → チェックリスト」の順（HTMLの順序は変えない） */
+  
   .vsec .vgrid{display:flex;flex-direction:column}
   .vsec .vleft,.vsec .vright{display:contents}
   .vsec .vframe{order:1}
@@ -752,22 +671,15 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   .vsec .vlead{order:4}
 }
 
-/* --- 「美容の仕事には限界がある。」--- */
-/* 2026-08-09 外部レビュー③：縦に長すぎ＋チェックの後の大きな空白を解消。
-   上下padding＝PC68 / スマホ44、締めの一言はチェック直下28px。 */
-/* 2026-08-10 カラー訂正で .forest が明るい地になったため、下パディングを復活させた
-   （旧：深緑ブロックを .statement と地続きにするため padding-bottom を 0 にしていた） */
+
+
+
 .limitsec{padding:48px 0 40px}
 @media(min-width:900px){ .limitsec{padding:68px 0 52px} }
 .limit-head{font-size:24px;line-height:1.5;color:var(--ink);margin:0 0 20px;text-align:center}
 @media(min-width:900px){ .limit-head{font-size:30px;margin-bottom:26px} }
 
-/* 「そんなことは、ありません。」＝8項目の締め。文頭の罫線（——）は 2026-08-10 に削除済み。
-   ⚠️2026-08-10 カラー訂正：旧版はこの一言を「深緑ブロックの中央」に置くため
-     min-height:163px/196px でブロックの高さを自前で持たせていた。
-     いま .limitsec は明るい地なので、通常の余白（margin）に戻している。
-     ページ全長は旧版と同じになるよう、削った高さを .limitsec の下パディングと
-     .statement の上パディングに配分してある。 */
+
 .limit-close{
   margin:26px 0 0;
   display:flex;align-items:center;justify-content:center;
@@ -775,10 +687,8 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 }
 @media(min-width:900px){ .limit-close{margin-top:32px;font-size:22px} }
 
-/* --- ③ 05ステップ --- */
-/* 2026-08-09 外部レビュー⑥：
-   PC＝コンテナ1120pxで5項目を均等幅・画像は各カード幅100%×高さ130px・間に矢印。
-   スマホ＝横スクロールをやめて1工程ずつ縦並び（画像左38%＋文章右）・工程間に下向き矢印。 */
+
+
 .flowsec .wrap{max-width:1120px}
 .flow{display:grid;gap:16px}
 @media(min-width:900px){
@@ -795,7 +705,7 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 @media(min-width:900px){
   .flow .f{text-align:center}
   .flow .f .ph{aspect-ratio:auto;height:130px}
-  /* カードとカードを矢印でつなぐ（カンプ①） */
+  
   .flow .f:not(:last-child)::after{
     content:"";position:absolute;top:57px;right:-16px;width:11px;height:11px;
     border-top:2px solid var(--sage);border-right:2px solid var(--sage);
@@ -813,7 +723,7 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   .flow .f .no{grid-area:no;margin:0 0 2px}
   .flow .f h3{grid-area:h3}
   .flow .f p{grid-area:p}
-  /* 工程間は下向きの矢印でつなぐ */
+  
   .flow .f:not(:last-child)::after{
     content:"";position:absolute;left:19%;bottom:-23px;width:11px;height:11px;
     margin-left:-6px;
@@ -822,18 +732,16 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   }
 }
 
-/* --- ④ 小さく始める（アイコン4つ） --- */
+
 .smallstart{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
 @media(min-width:600px){ .smallstart{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px} }
 .smallstart .s{text-align:center}
-/* svg は inline なので display:block にしないと margin:auto が効かず、
-   ラベルと同じ行に並んで左に寄って見える（2026-08-09 修正） */
+
 .smallstart .s .ico{display:block;width:32px;height:32px;margin:0 auto 8px;color:var(--forest)}
 .smallstart .s span{display:block;font-size:13px;line-height:1.6;color:var(--ink)}
-/* 4アイコンはPCでは必ず1行（半分幅のカラムでも折らない） */
+
 @media(min-width:900px){ .smallstart{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px} }
-/* 2026-08-10 ここはページ内で数少ない「色のベタ面」。明るいグリーンのグラデーションに。
-   白文字が乗るので、明るい側でも #4F8F35 より薄くしない（#86B94A では 2.3:1 で読めない）。 */
+
 .small-close{
   margin:18px 0 0;font-size:14.5px;line-height:1.9;color:#fff;
   background:linear-gradient(135deg,var(--green-fill) 0%,var(--green-fill-d) 100%);
@@ -841,17 +749,15 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   text-shadow:0 1px 2px rgba(26,54,14,.22);
 }
 .small-close b{color:#fff}
-/* 不安4項目＋女性写真。PCでは横に並べて、右カラム（小さく始める）と高さをそろえる */
+
 .worry{display:grid;gap:18px}
-/* 2026-08-09 外部レビュー⑦：人物写真は左パネル内の右38%。
-   チェックは「大きなカード」をやめて行単位のリストに戻す（下の .bclose .check 参照）。 */
+
 @media(min-width:900px){ .worry{grid-template-columns:minmax(0,62%) minmax(0,38%);gap:18px;align-items:stretch} }
 .worry-photo{margin-top:0}
 @media(min-width:900px){ .worry-photo{aspect-ratio:auto;min-height:100%} }
 
-/* --- ⑤ 学ぶ内容（8カード＋右に大きな写真）--- */
-/* 2026-08-09 外部レビュー⑧：写真を8カード2段ぶんと同じ高さに。カード高さもそろえる。
-   スマホは2列のまま、写真をカード群の直下に寄せて別セクションに見せない。 */
+
+
 .learn2{display:grid;gap:20px}
 @media(min-width:900px){
   .learn2{grid-template-columns:minmax(0,2fr) minmax(280px,.8fr);gap:30px;align-items:stretch}
@@ -874,15 +780,13 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 .curri .c span{font-size:13px;line-height:1.7;color:var(--body)}
 .curri-note{font-size:12.5px;color:var(--mute);text-align:right;margin:14px 0 0}
 
-/* --- 2026-08-10 .forest（限界がある／学ぶ内容）は明るい地になったので、
-       白文字への差し替えは全て撤去。通常の文字色のままで読める。 --- */
+
 .forest .limit-close{color:var(--forest-d)}
 .forest .curri-note{color:var(--mute)}
 .forest .flow .f p{color:var(--body)}
 
-/* --- 受講後の活動イメージ 7点の横並び --- */
-/* 2026-08-09 外部レビュー⑨：PCは7枚を同じ幅で横一列（セクション幅1120px）・サムネを1.4倍に。
-   スマホは1枚42vwにして、常に次の1枚が3割見える＝説明文なしでも横に続くと分かる。 */
+
+
 .actsec .wrap{max-width:1120px}
 .acts{
   display:grid;grid-auto-flow:column;grid-auto-columns:40vw;
@@ -890,10 +794,8 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
 }
 @media(max-width:899px){
-  /* 画面の右端まで使い切って、次の1枚が2〜3割のぞく状態にする
-     （「横にスクロールしてください」と書かずに、見え方で伝えるため） */
-  /* scroll-padding-left が無いと、mandatory スナップが左paddingぶん勝手にスクロールして
-     1枚目が画面左端に貼り付く（本文の左揃えが崩れる） */
+  
+  
   .acts{
     width:calc(100% + 44px);margin-left:-22px;
     padding-left:22px;padding-right:22px;scroll-padding-left:22px;
@@ -910,10 +812,9 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
   .acts .a .ph{aspect-ratio:auto;height:150px}
 }
 
-/* --- 2カラムの土台（④と⑥で使う）--- */
+
 .bclose{display:grid;gap:26px;align-items:start}
-/* 2026-08-09 外部レビュー⑦：PCは 1fr 1fr で見出しの上端をそろえる。
-   左右のパネルは高さもそろえる（下端の空きをなくす）。 */
+
 @media(min-width:900px){
   .bclose{grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
   .beige .bclose > div{display:flex;flex-direction:column}
@@ -923,37 +824,35 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 .bclose h2{margin:0 0 14px;font-size:24px;line-height:1.5;color:var(--ink)}
 @media(min-width:900px){ .bclose h2{font-size:30px;line-height:1.45} }
 .bclose .brand-line{font-size:12.5px;letter-spacing:.14em;color:var(--forest-d);margin:0 0 8px}
-/* 2カラムの中では、チェックは常に1列（半分の幅で2列にすると読めない） */
+
 .bclose .checks{grid-template-columns:1fr;gap:0}
-/* 2026-08-09 外部レビュー⑦：ここは「大きなカード」をやめて行単位のチェックリストに戻す。
-   （「限界がある」側は白いカードのまま＝あちらは面を作る役目がある） */
+
 .bclose .check{
   background:transparent;border:0;border-bottom:1px solid var(--line);
   border-radius:0;padding:11px 2px;
 }
 .bclose .checks .check:last-child{border-bottom:0}
-/* 薄い緑地・白地のカードの上でもチェックは基準グリーンで統一 */
+
 .limitsec .check .tick,.bclose .check .tick{color:var(--forest)}
-/* 文の途中で折り返させたくない塊（スマホで「か？」だけ落ちるのを防ぐ） */
+
 .nb{display:inline-block}
-/* 下線つきの強調は、途中で折り返すと下線が割れるので塊で改行させる */
+
 .actsec .sec-head h2 em{display:inline-block}
 
-/* --- ⑥ 最終CTA（PCは3カラム）--- */
-/* 2026-08-09 外部レビュー⑤：左＝メッセージ / 中央＝集合写真（カラム全面） / 右＝CTA（縦中央）。
-   スマホは「メッセージ → 集合写真 → CTA」の縦積み。 */
+
+
 .lastcta{text-align:left}
 .lastcta-copy p{margin:0 0 12px;font-size:15px;line-height:1.9;color:var(--body);max-width:none}
 .lastcta-photo{aspect-ratio:4/3;border-radius:var(--radius)}
 @media(min-width:900px){
   .lastcta .wrap{max-width:1200px}
   .lastcta .bclose{grid-template-columns:30fr 38fr 32fr;gap:28px;align-items:stretch}
-  /* 左カラムが30%＝約330pxなので、見出しだけ29pxに落として2行に収める */
+  
   .lastcta .bclose h2{font-size:29px;letter-spacing:0}
   .lastcta-photo{aspect-ratio:auto;min-height:100%}
   .lastcta-box{align-self:center}
 }
-/* CTAカラムは32%＝約350px。ボタン文字が2行に折れないよう、ここだけ字を落とす */
+
 .lastcta-box .btn{font-size:16.5px;padding:17px 14px;gap:8px}
 .lastcta-box .btn .li{width:22px;height:22px;flex:0 0 22px}
 .lastcta-box{
@@ -966,13 +865,9 @@ footer .copy{margin-top:16px;font-size:11.5px;color:rgba(255,255,255,.72)}
 .lastcta-box .btn{margin-top:18px}
 .lastcta .btn-sub{text-align:center}
 
-/* =========================================================
-   スマホ表示の詰め（2026-08-08）
-   Instagram広告の流入はほぼスマホ。1画面に入る情報量を増やし、
-   全体の縦の長さを削る。PC側は下の min-width:900px で元に戻す。
-   ========================================================= */
+
 body{line-height:1.85}
-section{padding:44px 0}   /* スマホは40〜56pxの範囲の下寄り。全長を伸ばさないため */
+section{padding:44px 0}   
 .sec-head{margin-bottom:24px}
 .sec-head h2{font-size:24px;line-height:1.5}
 .hero{padding-bottom:26px}
@@ -1011,7 +906,7 @@ section{padding:44px 0}   /* スマホは40〜56pxの範囲の下寄り。全長
 footer{padding:28px 0 26px}
 
 @media(min-width:900px){
-  /* PCも余白を締める（2026-08-09 外部レビュー⑩） */
+  
   body{line-height:1.9}
   section{padding:64px 0}
   .sec-head{margin-bottom:28px}
@@ -1047,14 +942,12 @@ footer{padding:28px 0 26px}
   footer{padding:34px 0 30px}
 }
 
-/* スマホでは「見出し → 写真 → 本文 → ボタン」の順に並べ替える。
-   ファーストビューに写真とCTAの両方を入れるため（HTMLの順序は変えない）。 */
+
 @media(max-width:899px){
   .hero-grid{display:flex;flex-direction:column}
   .hero-grid > div:not(.hero-photo):not(.hero-seal){display:contents}
-  .hero-photo{aspect-ratio:4/3}   /* 縦を抑えてCTAを1画面に入れる */
-  /* 2026-08-09 外部レビュー④：角丸のカード写真だとコピーと分離して見えるので、
-     スマホのFV写真は左右いっぱい・角丸なしにしてコピーと一体で見せる。 */
+  .hero-photo{aspect-ratio:4/3}   
+  
   .hero-photo,.bhero-photo{
     width:calc(100% + 44px);margin-left:-22px;border-radius:0;
   }
@@ -1067,11 +960,7 @@ footer{padding:28px 0 26px}
   .hero-grid .btn{order:4}
   .hero-grid .btn-sub{order:5}
 
-  /* 2026-08-10 B案のFVも同じ考え方に統一：スマホの第一画面に
-     「見出し → 写真 → 本文 → CTA」を必ず入れる。
-     円バッジ3つ（.bmerits）とブランド行（.brand-line）はCTAの下へ回す。
-     HTMLの順序は変えていない（PCは上の min-width:900px 側が効くので無変更）。
-     ⚠️元に戻すときはこのブロックごと削除すれば旧レイアウトに戻る。 */
+  
   .bhero .bhero-inner{display:flex;flex-direction:column}
   .bhero .bhero-inner > h1{order:1}
   .bhero .bhero-inner > .bhero-photo{order:2}
@@ -1082,24 +971,15 @@ footer{padding:28px 0 26px}
   .bhero .bhero-inner > .brand-line{order:7;margin-top:18px}
 }
 
-/* =========================================================================
-   2026-08-16 スマホの全長を目安（10,200px）内に収めるための余白の詰め直し
-   -------------------------------------------------------------------------
-   ⚠️ 触っているのは「余白」と「帯写真の高さ」だけ。
-      文章・CTA・リンク・セクションの順序・写真の枚数は1つも変えていない。
-   ⚠️ PC（min-width:900px）には効かない。スマホ幅（〜899px）だけ。
-   ⚠️ 戻すときはこのブロックごと削除する
-      （原本の丸ごとの控え＝assets/_style.css.bak_20260816_length）
-   ========================================================================= */
+
 @media(max-width:899px){
-  /* 通常セクションの上下 48 → 36
-     8/9の外部レビュー⑩で48pxに統一したもの。ここが全長にいちばん効く。 */
+  
   section{padding:36px 0}
-  /* 見出しと本文の間 28 → 22 */
+  
   .sec-head{margin-bottom:22px}
-  /* 全幅の帯写真の高さ 150 → 132（写真は残す。高さだけ） */
+  
   .band{height:clamp(132px,22vw,300px)}
-  /* カード・グリッドのすき間を2〜4pxずつ */
+  
   .pillars{gap:12px}
   .checks{gap:10px}
   .cause{gap:11px}
@@ -1107,14 +987,11 @@ footer{padding:28px 0 26px}
   .fit{gap:12px}
   .stats{gap:10px;margin-top:20px}
   .vgrid{gap:18px}
-  /* フッター 28/26 → 24/22 */
+  
   footer{padding:24px 0 22px}
 }
 
-/* =========================================================================
-   2026-09-06 Design refinement: shared A / start, then B-specific adjustments.
-   Keep text visibility and DOM reading order; use local photographs only.
-   ========================================================================= */
+
 :root{
   --space-1:8px;--space-2:12px;--space-3:16px;--space-4:24px;
   --space-5:32px;--space-6:48px;--space-7:64px;
@@ -1137,7 +1014,7 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu 
 .hero .lead,.bhero .lead{line-height:1.75}
 .hero-badge,.bhero .eyebrow-bar{padding:8px var(--pad);letter-spacing:.08em;border-radius:0 0 4px 0}
 
-/* Seal copy stays in its original reading position, outside the photo. */
+
 .hero .hero-seal,.bhero .bseal{
   position:static;inset:auto;width:fit-content;height:auto;max-width:100%;
   display:flex;flex-direction:row;align-items:center;justify-content:flex-start;
@@ -1151,7 +1028,7 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu 
 .hero .hero-seal{order:2}
 .bhero .bhero-inner > .bseal{order:3}
 
-/* Flat, quiet surfaces. White cards carry the content; rules define groups. */
+
 .check{background:var(--paper);border-color:var(--line);border-radius:4px}
 .cause .c{border-top-width:1px;border-top-color:var(--gold);text-align:left}
 .pillar,.learn .l,.curri .c,.voice,.fit .box{border-radius:var(--radius);box-shadow:none}
@@ -1171,7 +1048,7 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu 
 .statement .eyebrow{color:#fff}
 .statement p{line-height:1.75}
 
-/* Existing location cards gain local photos without adding any content. */
+
 .stats .stat{overflow:hidden;padding:0 12px 12px}
 .stats .stat .ico{display:none}
 .stats .stat::before{
@@ -1184,7 +1061,7 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu 
 .stat .vl{font-size:22px;line-height:1.35}
 .band::after{background:linear-gradient(180deg,rgba(255,253,248,.2),transparent 24%,transparent 80%,rgba(251,247,236,.25))}
 
-/* All white button text sits on the existing accessible green fill. */
+
 .btn,.btn.green{
   background:linear-gradient(135deg,var(--green-fill),var(--green-fill-d));
   min-height:56px;margin:24px 0 0;padding:16px 20px;gap:8px;
@@ -1214,7 +1091,7 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu 
 .js .rv{transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
 .js .rv.in{transform:none}
 
-/* B: keep the five-step composition, with consistent radii and spacing. */
+
 .bmerits{gap:12px}
 .bhero .brand-line b{color:var(--forest-d)}
 .ul:hover{color:var(--forest-d)}
@@ -1288,7 +1165,7 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu 
   .btn:hover,.btn:active{transform:none}
 }
 
-/* Mobile finishing pass: one spacing scale and unobstructed reading. */
+
 @media(max-width:899px){
   html{scroll-padding-bottom:80px}
   body{padding-bottom:env(safe-area-inset-bottom)}
@@ -1314,11 +1191,11 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu 
   .flow .f .ph{align-self:start}
   .bclose{gap:24px}
 }
-/* opacity preserves the existing text/accessibility tree and SHA1. */
+
 .sticky[data-reading-clear="false"]{opacity:0;pointer-events:none;transform:translateY(110%);transition:none}
 .sticky[data-reading-clear="true"]{opacity:1;transform:translateY(0)}
 
-/* Second visual review: balanced short copy and consistent step geometry. */
+
 @media(max-width:899px){
   .hero-photo,.bhero-photo{aspect-ratio:3/2}
   .steps.green .step,.forest .steps.green .step{border-color:var(--line)}
