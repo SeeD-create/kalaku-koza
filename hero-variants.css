@@ -1,0 +1,126 @@
+/* Isolated first-view experiments. The published index.html keeps its current design. */
+.preview-nav{position:relative;z-index:30;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:9px 12px;background:#292c28;color:#fff;font:12px/1.5 var(--sans)}
+.preview-nav span{margin-right:5px;opacity:.75}.preview-nav a{color:#fff;text-decoration:none;border:1px solid #ffffff70;border-radius:20px;padding:4px 10px}.preview-nav a[aria-current="page"]{background:#fff;color:#292c28}
+.hero-variant-a .hero,.hero-variant-b .hero,.hero-variant-c .hero{max-width:none;color:inherit}
+.hero-variant-a .hero-copy:before,.hero-variant-a .hero-copy:after,.hero-variant-b .hero-copy:before,.hero-variant-b .hero-copy:after,.hero-variant-c .hero-copy:before,.hero-variant-c .hero-copy:after{display:none}
+.hero-variant-a .hero .hero-lede,.hero-variant-b .hero .hero-lede,.hero-variant-c .hero .hero-lede{transform:none;border:0;padding:0}
+.hero-variant-a .hero .hero-lede:before,.hero-variant-b .hero .hero-lede:before,.hero-variant-c .hero .hero-lede:before{display:none}
+.hero-variant-a .hero .hero-formula,.hero-variant-b .hero .hero-formula,.hero-variant-c .hero .hero-formula{border:0;border-radius:0;background:transparent}
+.hero-variant-a .hero .hero-title-line,.hero-variant-b .hero .hero-title-line,.hero-variant-c .hero .hero-title-line{white-space:nowrap}
+.hero-variant-a .hero .hero-btn-label,.hero-variant-b .hero .hero-btn-label,.hero-variant-c .hero .hero-btn-label{display:block}
+
+/* A — Gallery editorial: fine rules, generous whitespace, restrained type. */
+.hero-variant-a .hero{background:#f8f7f2;--ink:#282d29;--rose:#a9717d;color:#282d29}
+.hero-variant-a .hero-photo{mask-image:none;overflow:hidden}
+.hero-variant-a .hero-photo img{object-fit:cover;object-position:50% 39%}
+.hero-variant-a .hero-copy{background:#f8f7f2!important;text-align:left}
+.hero-variant-a .hero-kicker{margin:0}
+.hero-variant-a .hero .hero-lede{font:500 11px/1.5 var(--sans);letter-spacing:.2em;color:#68766e}
+.hero-variant-a .hero h1{color:#282d29;font-weight:500;letter-spacing:-.06em}
+.hero-variant-a .hero h1 em{color:#9f6c79}
+.hero-variant-a .hero .hero-formula{justify-content:flex-start;padding:0;margin:0;border-top:1px solid #bdc1b8;border-bottom:1px solid #bdc1b8;color:#57645c;gap:12px;font:400 11px/1.4 var(--sans);letter-spacing:.03em}
+.hero-variant-a .hero .hero-formula i{color:#9f6c79}
+.hero-variant-a .hero .hero-lead{font:400 13px/1.9 var(--sans);color:#58645c}
+.hero-variant-a .hero .btn{background:#334b40;border-radius:2px;box-shadow:none;color:#fff}
+.hero-variant-a .hero .btn:hover{background:#263c32}
+.hero-variant-a .hero .status{color:#58645c}
+@media(max-width:999px){
+ .hero-variant-a .hero{display:flex;flex-direction:column}
+ .hero-variant-a .hero-photo{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:auto;height:340px;min-height:0;margin:16px 16px 0;border-radius:1px;flex:none}
+ .hero-variant-a .hero-photo img{width:100%;height:100%;aspect-ratio:auto}
+ .hero-variant-a .hero-copy{width:auto;min-height:0;margin:0;padding:30px 28px 38px;display:block}
+ .hero-variant-a .hero h1{font-size:clamp(38px,10.8vw,58px);line-height:1.38;margin:15px 0 24px}
+ .hero-variant-a .hero .hero-formula{padding:12px 0;font-size:clamp(10px,2.9vw,13px)}
+ .hero-variant-a .hero .hero-lead{margin:21px 0 0}
+ .hero-variant-a .hero .actions{margin:27px 0 0;max-width:400px}
+ .hero-variant-a .hero .btn{min-height:74px;font:500 14px/1.5 var(--sans)}
+}
+@media(min-width:1000px){
+ .hero-variant-a .hero{display:grid;grid-template-columns:44% 56%;min-height:690px}
+ .hero-variant-a .hero-copy{grid-column:1;grid-row:1;width:auto;min-height:690px;padding:65px max(35px,6vw);margin:0;display:flex;flex-direction:column;justify-content:center}
+ .hero-variant-a .hero-photo{grid-column:2;grid-row:1;position:relative;inset:auto;width:auto;height:auto;min-height:690px;margin:24px 24px 24px 0;border-radius:1px}
+ .hero-variant-a .hero-photo img{height:100%}
+ .hero-variant-a .hero h1{font-size:clamp(46px,4.15vw,68px);line-height:1.42;margin:24px 0 29px}
+ .hero-variant-a .hero .hero-formula{max-width:390px;padding:14px 0}
+ .hero-variant-a .hero .hero-lead{margin:25px 0 0;font-size:14px}
+ .hero-variant-a .hero .actions{width:370px;max-width:100%;margin:32px 0 0}
+ .hero-variant-a .hero .btn{min-height:78px;font:500 15px/1.5 var(--sans)}
+}
+
+/* B — Cinematic: the photograph becomes the entire first impression. */
+.hero-variant-b .hero{background:#172620;--ink:#fff;--rose:#e9b8c1;color:#fff}
+.hero-variant-b .hero:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#12251fea 0%,#12251f8a 43%,#12251f10 77%);z-index:1;pointer-events:none}
+.hero-variant-b .hero-photo{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;mask-image:none}
+.hero-variant-b .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 33%;aspect-ratio:auto}
+.hero-variant-b .hero-copy{position:relative;z-index:2;background:none!important;text-align:left}
+.hero-variant-b .hero-kicker{margin:0}
+.hero-variant-b .hero .hero-lede{font:500 11px/1.5 var(--sans);letter-spacing:.22em;color:#e8e8dc}
+.hero-variant-b .hero h1{color:#fff;font-weight:500;letter-spacing:-.055em;text-shadow:0 2px 18px #15231b66}
+.hero-variant-b .hero h1 small{color:#fff}
+.hero-variant-b .hero h1 em{color:#f1c2cc}
+.hero-variant-b .hero .hero-formula{justify-content:flex-start;padding:0;margin:0;gap:13px;color:#f4eee8;font:400 11px/1.4 var(--sans);letter-spacing:.05em}
+.hero-variant-b .hero .hero-formula i{color:#e7bfca}
+.hero-variant-b .hero .hero-lead{font:400 13px/1.9 var(--sans);color:#fff}
+.hero-variant-b .hero .btn{background:#f4efe7;border:1px solid #f4efe7;border-radius:2px;box-shadow:none;color:#253b32}
+.hero-variant-b .hero .btn:hover{background:#fff;color:#253b32}
+.hero-variant-b .hero .ico{color:#253b32;border-color:#253b3270}
+.hero-variant-b .hero .btn>span:nth-child(2){border-color:#253b3250}
+.hero-variant-b .hero .duration{border-color:#253b3260}
+.hero-variant-b .hero .status{color:#fff}
+@media(max-width:999px){
+ .hero-variant-b .hero{min-height:760px;display:flex;align-items:flex-end}
+ .hero-variant-b .hero-copy{width:100%;min-height:0;padding:0 27px 42px;margin:0;display:block}
+ .hero-variant-b .hero h1{font-size:clamp(41px,11.5vw,62px);line-height:1.3;margin:17px 0 24px}
+ .hero-variant-b .hero .hero-formula{font-size:clamp(10px,2.8vw,13px)}
+ .hero-variant-b .hero .hero-lead{margin:18px 0 0}
+ .hero-variant-b .hero .actions{max-width:400px;margin:22px 0 0}
+ .hero-variant-b .hero .btn{min-height:76px;font:500 14px/1.5 var(--sans)}
+}
+@media(min-width:1000px){
+ .hero-variant-b .hero{min-height:720px;display:flex;align-items:flex-end}
+ .hero-variant-b .hero:after{background:linear-gradient(90deg,#12251fd9 0%,#12251f6b 55%,#12251f08 100%),linear-gradient(0deg,#12251f88,transparent 55%)}
+ .hero-variant-b .hero-photo img{object-position:50% 45%}
+ .hero-variant-b .hero-copy{width:670px;max-width:60%;min-height:0;padding:0 0 68px clamp(50px,7vw,110px);margin:0;display:block}
+ .hero-variant-b .hero h1{font-size:clamp(49px,5vw,70px);line-height:1.36;margin:21px 0 23px}
+ .hero-variant-b .hero .hero-formula{font-size:13px}
+ .hero-variant-b .hero .hero-lead{font-size:15px;margin:20px 0 0}
+ .hero-variant-b .hero .actions{width:390px;max-width:100%;margin:27px 0 0}
+ .hero-variant-b .hero .btn{min-height:80px;font:500 16px/1.5 var(--sans)}
+}
+
+/* C — Atelier: an arched editorial portrait and a quiet rose paper panel. */
+.hero-variant-c .hero{background:#f4e9e7;--ink:#403b39;--rose:#a35d72;color:#403b39}
+.hero-variant-c .hero:after{display:none}
+.hero-variant-c .hero-photo{mask-image:none;overflow:hidden;border:7px solid #fff9f3;border-radius:47% 47% 3px 3px/24% 24% 3px 3px;box-shadow:0 20px 35px -27px #65485099}
+.hero-variant-c .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;aspect-ratio:auto}
+.hero-variant-c .hero-copy{background:none!important;text-align:center}
+.hero-variant-c .hero-kicker{margin:0}
+.hero-variant-c .hero .hero-lede{font:500 11px/1.5 var(--sans);letter-spacing:.2em;color:#8a6070}
+.hero-variant-c .hero h1{color:#403b39;font-weight:500;letter-spacing:-.055em}
+.hero-variant-c .hero h1 em{color:#a35d72}
+.hero-variant-c .hero .hero-formula{justify-content:center;margin:0;padding:0;color:#74645f;gap:12px;font:400 11px/1.4 var(--sans)}
+.hero-variant-c .hero .hero-formula i{color:#a35d72}
+.hero-variant-c .hero .hero-lead{font:400 13px/1.9 var(--sans);color:#655a56}
+.hero-variant-c .hero .btn{background:#704f5c;border-radius:50px;box-shadow:none;color:#fff}
+.hero-variant-c .hero .btn:hover{background:#5b3e4a}
+.hero-variant-c .hero .status{color:#704f5c}
+@media(max-width:999px){
+ .hero-variant-c .hero{display:flex;flex-direction:column;align-items:center}
+ .hero-variant-c .hero-photo{position:relative;inset:auto;width:min(80%,440px);height:370px;min-height:0;margin:24px auto 0;flex:none}
+ .hero-variant-c .hero-copy{width:100%;min-height:0;margin:0;padding:24px 26px 38px;display:block}
+ .hero-variant-c .hero h1{font-size:clamp(39px,10.8vw,58px);line-height:1.36;margin:17px 0 22px}
+ .hero-variant-c .hero .hero-formula{font-size:clamp(10px,2.8vw,13px)}
+ .hero-variant-c .hero .hero-lead{margin:19px 0 0}
+ .hero-variant-c .hero .actions{max-width:400px;margin:25px auto 0}
+ .hero-variant-c .hero .btn{min-height:76px;font:500 14px/1.5 var(--sans)}
+}
+@media(min-width:1000px){
+ .hero-variant-c .hero{display:grid;grid-template-columns:48% 52%;align-items:center;min-height:720px;padding:30px clamp(35px,5vw,82px)}
+ .hero-variant-c .hero-copy{grid-column:1;grid-row:1;width:auto;min-height:0;margin:0;padding:20px 20px 20px 0;display:block}
+ .hero-variant-c .hero-photo{grid-column:2;grid-row:1;position:relative;inset:auto;width:min(92%,570px);height:620px;min-height:0;margin:0 auto}
+ .hero-variant-c .hero h1{font-size:clamp(47px,4.3vw,66px);line-height:1.42;margin:20px 0 26px}
+ .hero-variant-c .hero .hero-formula{font-size:13px}
+ .hero-variant-c .hero .hero-lead{margin:23px 0 0;font-size:14px}
+ .hero-variant-c .hero .actions{width:380px;max-width:100%;margin:29px auto 0}
+ .hero-variant-c .hero .btn{min-height:80px;font:500 15px/1.5 var(--sans)}
+}
