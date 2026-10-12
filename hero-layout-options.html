@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>スマホのファーストビュー比較｜K-LABO</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:#263b31;background:#f5f1eb}
+    *{box-sizing:border-box}body{margin:0}header{padding:38px max(22px,calc((100vw - 1170px)/2));background:#fff;border-bottom:1px solid #e7e1d8}
+    .eyebrow{margin:0;color:#8b6b69;font:600 11px/1.5 system-ui,sans-serif;letter-spacing:.22em}h1{margin:9px 0 10px;font:500 clamp(26px,3vw,36px)/1.35 Georgia,"Yu Mincho",serif}
+    .intro{margin:0;color:#617168;font-size:13px;line-height:1.8}main{max-width:1170px;margin:auto;padding:31px 20px 66px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px}
+    .card{background:#fff;border:1px solid #e1dbd2;border-radius:18px;overflow:hidden;box-shadow:0 12px 35px #2036280d}.card-head{padding:20px 22px 16px;border-bottom:1px solid #eee8e1}
+    .tag{font-size:10px;font-weight:700;letter-spacing:.15em;color:#9e6978}.card h2{font:500 22px/1.35 Georgia,"Yu Mincho",serif;margin:7px 0 5px}.desc{font-size:12px;line-height:1.7;color:#657169;margin:0}
+    .stage{padding:17px;background:#eae5dc;display:flex;justify-content:center}.phone{width:390px;max-width:100%;border:7px solid #29372f;border-radius:29px;overflow:hidden;background:#fff;box-shadow:0 17px 30px #25382d23}
+    .phone-top{height:18px;background:#29372f;position:relative}.phone-top:after{content:"";width:72px;height:7px;border-radius:8px;position:absolute;top:5px;left:calc(50% - 36px);background:#59675d}iframe{display:block;width:100%;height:720px;border:0;background:#fff}
+    .actions{padding:17px 22px 21px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.edit{display:inline-block;text-decoration:none;color:#fff;background:#2b503d;padding:10px 16px;border-radius:7px;font-size:12px;font-weight:650}.note{font-size:11px;color:#6a756d}
+    @media(max-width:800px){main{grid-template-columns:1fr;max-width:500px;padding:20px 12px 45px}.stage{padding:12px}.card-head{padding:17px 17px 13px}.actions{padding:15px 17px 18px}}
+  </style>
+</head>
+<body>
+  <header><p class="eyebrow">K-LABO · MOBILE HERO STUDY</p><h1>文字配置の比較案</h1><p class="intro">写真の見せ方はそのままに、見出しの大きさ・位置と横線の長さを変えました。気に入った案は「この案を調整」から微調整できます。</p></header>
+  <main id="options"></main>
+  <script>
+  (()=>{
+    const productionSizes=[100,100,105,100,100,100];
+    const variants=[
+      {id:'A',name:'静かな余白',description:'文字を少し小さく、横線を短く。写真と文字の間に呼吸をつくる案。',offsets:[[-10,1],[-10,-10],[-20,-16],[-15,-28],[0,0],[0,0]],sizes:[95,100,96,62,100,100]},
+      {id:'B',name:'凛としたポスター',description:'見出しを大きく見せ、横線も広めに。視線を一気に集める案。',offsets:[[-14,1],[-15,-16],[-26,-19],[-20,-39],[0,0],[0,0]],sizes:[100,100,110,88,100,100]},
+      {id:'C',name:'整った左揃え',description:'文字の左端をそろえ、細い横線で締める。端正で読みやすい案。',offsets:[[0,7],[0,-6],[-2,-9],[0,-26],[0,0],[0,0]],sizes:[95,100,98,72,100,100]},
+      {id:'D',name:'写真を主役に',description:'文字を上に寄せて小さめに。人物と空間を広く見せる案。',offsets:[[-10,-5],[-10,-17],[-20,-36],[-15,-58],[0,0],[0,0]],sizes:[90,95,91,48,100,100]}
+    ];
+    const selectors=['.poster-eyebrow','.hero-kicker','.hero h1','.poster-rule','.hero-formula','.hero-lead'];
+    const sizeSelectors=['.poster-eyebrow','.hero .hero-lede','.hero h1',null,'.hero-formula','.hero-lead'];
+    const root=document.querySelector('#options');
+    variants.forEach(v=>{
+      const p=[...v.offsets.flat(),...v.sizes].join(',');
+      const card=document.createElement('article');card.className='card';
+      card.innerHTML=`<div class="card-head"><div class="tag">OPTION ${v.id}</div><h2>${v.name}</h2><p class="desc">${v.description}</p></div><div class="stage"><div class="phone"><div class="phone-top"></div><iframe title="${v.name}のスマホ表示" src="./?layout-preview=1"></iframe></div></div><div class="actions"><a class="edit" href="hero-layout-editor.html?p=${encodeURIComponent(p)}">この案を調整する</a><span class="note">本番LPにはまだ反映していません</span></div>`;
+      root.append(card);
+      const frame=card.querySelector('iframe');
+      frame.addEventListener('load',()=>{
+        const doc=frame.contentDocument;if(!doc)return;
+        doc.addEventListener('click',e=>{if(e.target.closest('a,button')){e.preventDefault();e.stopImmediatePropagation()}},true);
+        const nodes=selectors.map(s=>doc.querySelector(s));
+        const fontNodes=sizeSelectors.map(s=>s?doc.querySelector(s):null);
+        const baseSizes=fontNodes.map((node,i)=>node?parseFloat(frame.contentWindow.getComputedStyle(node).fontSize)/(productionSizes[i]/100):0);
+        const baseRuleWidth=nodes[3].getBoundingClientRect().width;
+        nodes.forEach((node,i)=>{if(node)node.style.transform=`translate3d(${v.offsets[i][0]}px,${v.offsets[i][1]}px,0)`});
+        fontNodes.forEach((node,i)=>{if(node)node.style.fontSize=(baseSizes[i]*v.sizes[i]/100)+'px'});
+        nodes[3].style.width=(baseRuleWidth*v.sizes[3]/100)+'px';
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
