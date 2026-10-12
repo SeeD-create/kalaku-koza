@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ヒーロー文字デザイン15案｜K-LABO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{font-family:"Zen Kaku Gothic New",sans-serif;color:#263a30;background:#f5f1eb}*{box-sizing:border-box}body{margin:0}
+    header{background:#fff;padding:35px max(20px,calc((100vw - 1310px)/2));border-bottom:1px solid #e8e1d7}
+    header .overline{font:600 11px/1.5 Outfit,sans-serif;letter-spacing:.23em;color:#9b6e77}h1{font:500 clamp(25px,3vw,37px)/1.35 "Shippori Mincho B1",serif;margin:9px 0 8px}
+    header p{font-size:13px;line-height:1.8;color:#647168;margin:0}.notice{display:inline-block;margin-top:13px;padding:6px 10px;background:#f6efe9;border-radius:3px;color:#7d6b65;font-size:11px}
+    main{max-width:1310px;padding:27px 14px 70px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
+    .card{min-width:0;background:#fff;border:1px solid #e2dbd2;border-radius:13px;overflow:hidden;box-shadow:0 12px 30px #23352810}
+    .card-head{padding:16px 18px 14px;min-height:105px}.num{font:700 11px/1 Outfit,sans-serif;letter-spacing:.16em;color:#a47980}.card h2{font:600 17px/1.4 "Shippori Mincho B1",serif;margin:7px 0 3px}.card p{font-size:11px;color:#69746b;line-height:1.65;margin:0}
+    .stage{padding:13px;background:#e9e4da;display:flex;justify-content:center}.poster{--ink:#fff;--accent:#f1b8c7;--micro:#f7efe6;--shade:linear-gradient(180deg,#101e1bbd 0%,#14241f9c 28%,#14241f12 65%,transparent 82%);width:390px;max-width:100%;height:570px;position:relative;overflow:hidden;background:#20382c;isolation:isolate}
+    .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}.poster:after{content:"";position:absolute;inset:0;background:var(--shade);z-index:0;pointer-events:none}
+    .copy{position:absolute;z-index:1;left:26px;right:22px;top:28px;color:var(--ink)}.brandline{display:block;font:500 10px/1.4 Outfit,sans-serif;letter-spacing:.22em;color:var(--micro);text-shadow:0 2px 7px #15271dc0}
+    .kicker{display:block;margin-top:16px;font:500 12px/1.5 "Zen Kaku Gothic New",sans-serif;letter-spacing:.09em;text-shadow:0 2px 7px #15271dc0}
+    .headline{font:600 47px/1.19 "Shippori Mincho B1",serif;letter-spacing:-.075em;margin:13px 0 0;text-shadow:0 2px 4px #0a170ee0,0 7px 18px #0a170eb0}
+    .line-one,.line-two{display:block;white-space:nowrap}.headline small{font-size:.47em;font-weight:500;letter-spacing:-.05em}.headline em{font-style:normal;color:var(--accent)}
+    .rule{display:block;width:230px;max-width:95%;height:2px;margin-top:17px;background:var(--accent);box-shadow:0 2px 8px #12251cb5}
+    .card-foot{padding:11px 16px 14px;color:#767c73;font-size:11px;line-height:1.5}
+    /* Each direction changes composition as well as color or type scale. */
+    .v01{--accent:#edb7c7}.v01 .copy{top:29px;left:27px}.v01 .headline{font-size:47px}.v01 .rule{width:188px;margin-top:18px}
+    .v02{--accent:#f6dfb4;--micro:#fff8e7;--shade:linear-gradient(180deg,#10251fcf,#10251fa8 34%,transparent 73%)}.v02 .copy{top:37px}.v02 .headline{font-size:42px;letter-spacing:-.09em}.v02 .rule{width:90px;height:1px;margin-top:21px}
+    .v03{--accent:#b9ddc0;--micro:#d6f0db}.v03 .copy{top:25px}.v03 .headline{font-size:49px}.v03 .kicker{display:inline-block;border:1px solid #dcf4d7a3;padding:3px 8px;margin-top:13px}.v03 .rule{width:266px;height:1px;margin-top:18px}
+    .v04{--accent:#f3d3b7;--micro:#f3dfcf;--shade:linear-gradient(180deg,#14241de0,#14241da1 41%,transparent 79%)}.v04 .copy{top:28px;left:31px;right:25px;padding:13px 13px 18px;border-top:1px solid #f6e7d2bd;border-left:1px solid #f6e7d2bd}.v04 .headline{font-size:43px}.v04 .rule{width:115px;height:1px}
+    .v05{--accent:#ffcbdd;--shade:linear-gradient(180deg,#14221ccf,#14221c9b 42%,transparent 82%)}.v05 .copy{top:28px;left:23px}.v05 .headline{font-size:49px;transform:rotate(-4deg);transform-origin:left center;margin-top:20px}.v05 .rule{width:270px;transform:rotate(-4deg);transform-origin:left;margin-top:18px}
+    .v06{--accent:#ffccd5;--shade:linear-gradient(180deg,#101d1bdc,#101d1bab 42%,transparent 76%)}.v06 .copy{top:29px}.v06 .headline{font-size:48px}.v06 .line-one{color:transparent;-webkit-text-stroke:1.4px #fff;text-shadow:0 2px 7px #091c13d9}.v06 .line-one small{color:#fff;-webkit-text-stroke:0}.v06 .rule{width:214px;height:1px}
+    .v07{--accent:#f0b7c7}.v07 .copy{top:30px}.v07 .headline{font-size:44px;line-height:1.45}.v07 .line-two em{color:#203b2e;background:#f3c7d1;box-decoration-break:clone;padding:0 .1em;text-shadow:none}.v07 .line-two small{color:#fff}.v07 .rule{width:120px;height:1px;margin-top:12px}
+    .v08{--accent:#f5c0cb}.v08 .copy{top:24px}.v08 .headline{margin-top:19px;line-height:1.08}.v08 .line-one{font-size:37px}.v08 .line-two{font-size:53px}.v08 .rule{width:186px;margin-top:21px;height:3px}
+    .v09{--accent:#e9d1a9;--micro:#f1e6d0;--shade:linear-gradient(180deg,#16241dbf,#15241e9e 41%,transparent 83%)}.v09 .copy{top:33px;text-align:right;left:12px;right:25px}.v09 .headline{font-size:43px}.v09 .rule{width:120px;height:1px;margin:21px 0 0 auto}
+    .v10{--accent:#ffe0e6}.v10 .copy{top:31px}.v10 .headline{font-size:45px;padding:11px 0 12px;border-top:1px solid #fff9;border-bottom:1px solid #fff9}.v10 .rule{display:none}.v10 .kicker{margin:13px 0 15px}
+    .v11{--accent:#e9b9c5}.v11 .copy{top:32px;left:41px}.v11 .headline{font-size:47px}.v11 .rule{width:6px;height:134px;position:absolute;left:-21px;top:54px;margin:0;background:linear-gradient(#f6d0d9,#f6d0d900)}.v11 .brandline{letter-spacing:.16em}
+    .v12{--accent:#f8d0ca;--shade:linear-gradient(180deg,#1d2520df,#1b2c239b 42%,transparent 80%)}.v12 .copy{top:27px}.v12 .headline{font-size:46px}.v12 .headline em{background:linear-gradient(95deg,#ffe5e8,#f8bec8 55%,#fff5d6);color:transparent;background-clip:text;-webkit-background-clip:text;text-shadow:none;filter:drop-shadow(0 3px 5px #102016b0)}.v12 .rule{width:245px;height:1px;background:linear-gradient(90deg,#f7bbcb,transparent)}
+    .v13{--accent:#f3c4d0}.v13 .copy{top:30px}.v13 .headline{font-size:46px}.v13 .line-two em{display:inline-block;transform:rotate(3deg);transform-origin:left center;border-bottom:2px solid #fac8d3;padding-bottom:3px}.v13 .rule{width:93px;height:1px;margin-top:21px}
+    .v14{--accent:#f5c0cb;--shade:linear-gradient(180deg,#162620d1,#1626209e 45%,transparent 80%)}.v14 .copy{top:25px;left:24px}.v14 .headline{font-size:44px;line-height:1.35}.v14 .line-one{display:table;background:#173e32b8;padding:0 9px 2px}.v14 .line-two{display:table;background:#173e32b8;padding:0 9px 2px;margin-top:6px}.v14 .rule{width:274px;height:1px;margin-top:15px}
+    .v15{--accent:#f5b1c2}.v15 .copy{top:21px;left:22px;right:8px}.v15 .kicker{margin-top:11px}.v15 .headline{margin-top:18px;line-height:1.07}.v15 .line-one{font-size:34px;letter-spacing:-.09em}.v15 .line-two{font-size:55px;letter-spacing:-.105em}.v15 .rule{width:295px;height:3px;margin-top:17px}
+    @media(max-width:1150px){main{grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px}}@media(max-width:700px){main{grid-template-columns:1fr;max-width:430px;padding:14px 9px 38px;gap:15px}header{padding:22px 18px}.card-head{min-height:0}.stage{padding:8px}.poster{height:570px}}
+    @media(max-width:380px){.poster{height:550px}.copy{transform:scale(.9);transform-origin:top left;width:calc(100% / .9)}.v05 .copy{transform:scale(.9);transform-origin:top left}}
+  </style>
+</head>
+<body>
+  <header><span class="overline">K-LABO · HERO TYPE STUDIES</span><h1>ヒーロー文字デザイン 15案</h1><p>写真とコピーは共通です。文字の大きさ、色、角度、線の置き方で印象を変えています。</p><span class="notice">デザイン検討用・本番LPは変更していません</span></header>
+  <main id="studies"></main>
+  <script>
+    const studies=[
+      ['01','ローズ・エディトリアル','淡いローズと短い線。上品で読みやすい。'],
+      ['02','パール・ミニマル','小さめの見出しと短い金色の線。余白を見せる。'],
+      ['03','ボタニカル・フレッシュ','ミント色と囲みコピーで爽やかに。'],
+      ['04','シャンパン・フレーム','細い枠とシャンパン色で高級感を。'],
+      ['05','ダイアゴナル','文字と線を傾け、動きを出す。'],
+      ['06','アウトライン','一段目を白い輪郭文字にして軽さを出す。'],
+      ['07','ロゼ・ハイライト','ピンクの帯で「新しい仕事」を強調。'],
+      ['08','タイポグラフィ主役','一段目を小さく、二段目を大きく。'],
+      ['09','右寄せラグジュアリー','右揃えと金色の短い線で静かな印象。'],
+      ['10','ファイン・ルール','見出しの上下を細い線で挟む。'],
+      ['11','バーティカル・ライン','縦線を添え、雑誌の表紙のように。'],
+      ['12','グラデーション・ロゼ','ピンクからアイボリーへの文字色。'],
+      ['13','サイン風アクセント','キーワードだけを少し傾ける。'],
+      ['14','コントラスト・ブロック','深緑の透ける帯で文字を際立たせる。'],
+      ['15','ファッション・マストヘッド','二段目を最も大きく、視線を集める。']
+    ];
+    const root=document.querySelector('#studies');
+    studies.forEach(([n,name,description])=>{
+      const card=document.createElement('article');card.className='card';
+      card.innerHTML=`<div class="card-head"><span class="num">OPTION ${n}</span><h2>${name}</h2><p>${description}</p></div><div class="stage"><div class="poster v${n}"><img src="assets/img/photo/h01_lesson_restored.png?v=202610071303" alt="植物美容のレッスンに参加する女性たち" loading="lazy"><div class="copy"><span class="brandline">K-LABO · BOTANICAL BEAUTY</span><span class="kicker">学ぶだけで終わらない。</span><h3 class="headline"><span class="line-one">植物美容<small>を、</small></span><span class="line-two"><em>新しい仕事</em><small>に。</small></span></h3><span class="rule" aria-hidden="true"></span></div></div></div><div class="card-foot">${name} ｜ ヒーロー画面のみ</div>`;
+      root.append(card);
+    });
+  </script>
+</body>
+</html>
