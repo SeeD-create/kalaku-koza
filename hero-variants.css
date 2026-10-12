@@ -129,11 +129,11 @@
 .hero-variant-b.poster-v2 .hero{display:block;min-height:0;background:#f7f3ec}
 .hero-variant-b.poster-v2 .hero:after{height:650px;bottom:auto;background:linear-gradient(90deg,#15241ebd 0%,#15241e4d 55%,transparent 78%),linear-gradient(180deg,#15241e78 0%,transparent 72%)}
 .hero-variant-b.poster-v2 .hero-photo{height:650px;bottom:auto}
-.hero-variant-b.poster-v2 .hero-photo img{object-position:50% 31%}
+.hero-variant-b.poster-v2 .hero-photo img{object-position:50% 36%}
 .hero-variant-b.poster-v2 .hero-copy{position:relative;z-index:2;width:100%;max-width:none;min-height:0;display:block;margin:0;padding:0;background:none!important}
-.hero-variant-b.poster-v2 .poster-hero-title{box-sizing:border-box;height:650px;padding:67px clamp(28px,6.8vw,100px);color:#fff}
+.hero-variant-b.poster-v2 .poster-hero-title{box-sizing:border-box;height:650px;padding:25px clamp(28px,6.8vw,100px);color:#fff}
 .hero-variant-b.poster-v2 .poster-eyebrow{display:block;font:500 12px/1.4 var(--sans);letter-spacing:.23em;color:#f0e9dc}
-.hero-variant-b.poster-v2 .hero-kicker{margin:34px 0 0}
+.hero-variant-b.poster-v2 .hero-kicker{margin:0}
 .hero-variant-b.poster-v2 .hero .hero-lede{font:400 15px/1.5 var(--sans);letter-spacing:.12em;color:#fff}
 .hero-variant-b.poster-v2 .hero h1{font-size:clamp(58px,6.7vw,90px);line-height:1.19;margin:18px 0 0;letter-spacing:-.07em;color:#fff}
 .hero-variant-b.poster-v2 .hero h1 em{color:#f2b5c2;text-shadow:0 2px 15px #102018a6}
