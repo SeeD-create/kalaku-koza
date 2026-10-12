@@ -38,53 +38,61 @@
     .hint{font-size:12px;line-height:1.6;color:#66746a;margin:9px 0 0}
     .reset{font-size:12px;padding:7px 12px;margin-top:18px}
     .toast{min-height:22px;color:#20603b;font-size:12px;margin-top:10px}
-    @media(max-width:760px){main{display:block;padding:19px 13px 40px}.panel{margin-top:24px}.preview-title{text-align:center}}
+    .mobile-tools{display:none}
+    @media(max-width:760px){main{display:block;padding:19px 13px 110px}.panel{margin-top:24px}.preview-title{text-align:center}.mobile-tools{display:block;position:fixed;z-index:100;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #dce3da;box-shadow:0 -8px 28px #172f1f24;padding:10px 16px max(10px,env(safe-area-inset-bottom))}.mobile-tools label{font-size:12px;margin:0 0 2px}.mobile-tools .size-line{margin:0}.mobile-tools output{font-size:12px}}
   </style>
 </head>
 <body>
-  <header><div class="brand">K-LABO · LAYOUT STUDIO</div><h1>スマホの文字配置を試す</h1><p class="intro">写真の上の文字を指やマウスで動かしてください。決まったら共有リンクをコピーして送れます。</p></header>
+  <header><div class="brand">K-LABO · LAYOUT STUDIO</div><h1>スマホの文字配置を試す</h1><p class="intro">文字の位置と大きさ、横線の長さを調整できます。決まったら共有リンクをコピーして送ってください。</p></header>
   <main>
     <section aria-label="スマホ表示のプレビュー"><p class="preview-title">実際のLPをスマホ幅で表示しています</p><div class="phone"><div class="phone-bar"></div><iframe id="preview" src="./?layout-preview=1" title="講座LPのスマホ表示"></iframe></div></section>
-    <section class="panel" aria-label="配置の操作"><h2>動かしたい文字を選ぶ</h2><p class="guide">画面上の文字を直接ドラッグできます。細かく動かしたいときは、下の矢印を押してください。</p>
+    <section class="panel" aria-label="配置の操作"><h2>調整したい部分を選ぶ</h2><p class="guide">画面上で直接ドラッグして位置を動かせます。矢印で位置を微調整し、スライダーで文字の大きさや横線の長さを変えてください。</p>
       <div class="parts" id="parts"></div>
       <p class="selected" id="selected">見出し</p>
       <div class="nudge"><button type="button" data-dx="-1" data-dy="0" aria-label="左へ1ピクセル">←</button><button type="button" data-dx="0" data-dy="-1" aria-label="上へ1ピクセル">↑</button><button type="button" data-dx="0" data-dy="1" aria-label="下へ1ピクセル">↓</button><button type="button" data-dx="1" data-dy="0" aria-label="右へ1ピクセル">→</button><span class="coords" id="coords">X 0 / Y 0</span></div>
-      <label for="title-size">大見出しの文字サイズ</label><div class="size-line"><input id="title-size" type="range" min="80" max="120" value="100" step="1"><output id="size-value">100%</output></div>
+      <label for="item-size" id="size-label">大見出しの文字サイズ</label><div class="size-line"><input id="item-size" type="range" min="60" max="160" value="100" step="1"><output id="size-value">100%</output></div>
       <button class="copy" id="copy" type="button">この配置の共有リンクをコピー</button><input class="link" id="share-link" type="text" readonly aria-label="共有リンク"><p class="hint">コピーできない場合は、この欄を長押ししてリンクをコピーしてください。リンクを開くと同じ配置を再現できます。</p>
       <button class="reset" id="reset" type="button">配置を元に戻す</button><div class="toast" id="toast" role="status"></div>
     </section>
   </main>
+  <div class="mobile-tools" aria-label="スマホ用サイズ調整"><label for="mobile-size" id="mobile-size-label">大見出しの文字サイズ</label><div class="size-line"><input id="mobile-size" type="range" min="60" max="160" value="100" step="1"><output id="mobile-size-value">100%</output></div></div>
   <script>
   (()=>{
     const names=['英字','短いコピー','大見出し','横線','植物の知識・調合・AI','説明文'];
     const selectors=['.poster-eyebrow','.hero-kicker','.hero h1','.poster-rule','.hero-formula','.hero-lead'];
-    const empty=()=>({offsets:[[-5,139],[-8,122],[-15,-57],[-8,-71],[0,0],[0,0]],size:100});
+    const empty=()=>({offsets:[[-5,139],[-8,122],[-15,-57],[-8,-71],[0,0],[0,0]],sizes:names.map(()=>100)});
     const frame=document.querySelector('#preview');
     const parts=document.querySelector('#parts');
     const link=document.querySelector('#share-link');
     const coords=document.querySelector('#coords');
     const selectedLabel=document.querySelector('#selected');
-    const sizeInput=document.querySelector('#title-size');
+    const sizeInput=document.querySelector('#item-size');
+    const sizeLabel=document.querySelector('#size-label');
     const sizeValue=document.querySelector('#size-value');
+    const mobileSizeInput=document.querySelector('#mobile-size');
+    const mobileSizeLabel=document.querySelector('#mobile-size-label');
+    const mobileSizeValue=document.querySelector('#mobile-size-value');
     const toast=document.querySelector('#toast');
-    let state=empty(),selected=2,nodes=[],baseTitleSize=0;
+    let state=empty(),selected=2,nodes=[],sizeNodes=[],baseSizes=[],baseRuleWidth=0;
     function parse(value){
       if(!value)return null;
       const n=value.split(',').map(Number);
-      if(n.length!==13||n.some(x=>!Number.isFinite(x)))return null;
-      return {offsets:names.map((_,i)=>[Math.max(-180,Math.min(180,n[i*2])),Math.max(-350,Math.min(350,n[i*2+1]))]),size:Math.max(80,Math.min(120,n[12]))};
+      if(![13,18].includes(n.length)||n.some(x=>!Number.isFinite(x)))return null;
+      const sizes=n.length===13?[100,100,n[12],100,100,100]:n.slice(12);
+      return {offsets:names.map((_,i)=>[Math.max(-180,Math.min(180,n[i*2])),Math.max(-350,Math.min(350,n[i*2+1]))]),sizes:sizes.map((x,i)=>Math.max(i===3?20:60,Math.min(i===3?130:160,x)))};
     }
-    state=parse(new URLSearchParams(location.search).get('p'))||parse(localStorage.getItem('kalaku-mobile-layout-v2'))||empty();
-    function encoded(){return [...state.offsets.flat().map(Math.round),state.size].join(',')}
-    function updateLink(){const u=new URL(location.href);u.searchParams.set('p',encoded());link.value=u.href;localStorage.setItem('kalaku-mobile-layout-v2',encoded())}
+    state=parse(new URLSearchParams(location.search).get('p'))||parse(localStorage.getItem('kalaku-mobile-layout-v3'))||empty();
+    function encoded(){return [...state.offsets.flat().map(Math.round),...state.sizes].join(',')}
+    function updateLink(){const u=new URL(location.href);u.searchParams.set('p',encoded());link.value=u.href;localStorage.setItem('kalaku-mobile-layout-v3',encoded())}
     function apply(){
       nodes.forEach((node,i)=>{if(node){const [x,y]=state.offsets[i];node.style.transform=`translate3d(${x}px,${y}px,0)`}});
-      if(nodes[2])nodes[2].style.fontSize=(baseTitleSize*state.size/100)+'px';
-      sizeInput.value=state.size;sizeValue.textContent=state.size+'%';
+      sizeNodes.forEach((node,i)=>{if(node&&i!==3)node.style.fontSize=(baseSizes[i]*state.sizes[i]/100)+'px'});
+      if(nodes[3])nodes[3].style.width=(baseRuleWidth*state.sizes[3]/100)+'px';
+      sizeInput.value=state.sizes[selected];mobileSizeInput.value=state.sizes[selected];sizeValue.textContent=state.sizes[selected]+'%';mobileSizeValue.textContent=state.sizes[selected]+'%';
       coords.textContent=`X ${Math.round(state.offsets[selected][0])} / Y ${Math.round(state.offsets[selected][1])}`;
       updateLink();
     }
-    function choose(i){selected=i;selectedLabel.textContent=names[i];parts.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('active',j===i));nodes.forEach((node,j)=>node&&node.classList.toggle('layout-selected',j===i));apply()}
+    function choose(i){selected=i;selectedLabel.textContent=names[i];sizeLabel.textContent=i===3?'横線の長さ':names[i]+'の文字サイズ';mobileSizeLabel.textContent=sizeLabel.textContent;sizeInput.min=mobileSizeInput.min=i===3?20:60;sizeInput.max=mobileSizeInput.max=i===3?130:160;parts.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('active',j===i));nodes.forEach((node,j)=>node&&node.classList.toggle('layout-selected',j===i));apply()}
     names.forEach((name,i)=>{const b=document.createElement('button');b.type='button';b.className='part';b.textContent=name;b.addEventListener('click',()=>choose(i));parts.append(b)});
     frame.addEventListener('load',()=>{
       const doc=frame.contentDocument;
@@ -92,7 +100,9 @@
       const style=doc.createElement('style');style.textContent='.layout-target{cursor:grab!important;touch-action:none!important;user-select:none!important;position:relative!important;z-index:8!important}.layout-target:hover,.layout-selected{outline:1px dashed #f7d986!important;outline-offset:4px!important}.layout-target:active{cursor:grabbing!important}';doc.head.append(style);
       doc.addEventListener('click',e=>{if(e.target.closest('a,button')){e.preventDefault();e.stopImmediatePropagation()}},true);
       nodes=selectors.map(s=>doc.querySelector(s));
-      baseTitleSize=parseFloat(frame.contentWindow.getComputedStyle(nodes[2]).fontSize);
+      sizeNodes=[nodes[0],doc.querySelector('.hero .hero-lede'),nodes[2],null,nodes[4],nodes[5]];
+      baseSizes=sizeNodes.map(node=>node?parseFloat(frame.contentWindow.getComputedStyle(node).fontSize):0);
+      baseRuleWidth=nodes[3].getBoundingClientRect().width;
       nodes.forEach((node,i)=>{
         if(!node)return;
         node.classList.add('layout-target');
@@ -110,7 +120,7 @@
       choose(selected);
     });
     document.querySelectorAll('[data-dx]').forEach(b=>b.addEventListener('click',()=>{state.offsets[selected][0]+=Number(b.dataset.dx);state.offsets[selected][1]+=Number(b.dataset.dy);apply()}));
-    sizeInput.addEventListener('input',()=>{state.size=Number(sizeInput.value);apply()});
+    [sizeInput,mobileSizeInput].forEach(input=>input.addEventListener('input',()=>{state.sizes[selected]=Number(input.value);apply()}));
     document.querySelector('#reset').addEventListener('click',()=>{state=empty();choose(2);toast.textContent='元の配置に戻しました。'});
     document.querySelector('#copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(link.value);toast.textContent='共有リンクをコピーしました。'}catch{link.focus();link.select();toast.textContent='リンク欄を選択しました。コピーしてください。'}});
     updateLink();
