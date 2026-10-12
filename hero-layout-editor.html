@@ -58,7 +58,7 @@
   (()=>{
     const names=['英字','短いコピー','大見出し','横線','植物の知識・調合・AI','説明文'];
     const selectors=['.poster-eyebrow','.hero-kicker','.hero h1','.poster-rule','.hero-formula','.hero-lead'];
-    const empty=()=>({offsets:names.map(()=>[0,0]),size:100});
+    const empty=()=>({offsets:[[-5,139],[-8,122],[-15,-57],[-8,-71],[0,0],[0,0]],size:100});
     const frame=document.querySelector('#preview');
     const parts=document.querySelector('#parts');
     const link=document.querySelector('#share-link');
@@ -74,9 +74,9 @@
       if(n.length!==13||n.some(x=>!Number.isFinite(x)))return null;
       return {offsets:names.map((_,i)=>[Math.max(-180,Math.min(180,n[i*2])),Math.max(-350,Math.min(350,n[i*2+1]))]),size:Math.max(80,Math.min(120,n[12]))};
     }
-    state=parse(new URLSearchParams(location.search).get('p'))||parse(localStorage.getItem('kalaku-mobile-layout'))||empty();
+    state=parse(new URLSearchParams(location.search).get('p'))||parse(localStorage.getItem('kalaku-mobile-layout-v2'))||empty();
     function encoded(){return [...state.offsets.flat().map(Math.round),state.size].join(',')}
-    function updateLink(){const u=new URL(location.href);u.searchParams.set('p',encoded());link.value=u.href;localStorage.setItem('kalaku-mobile-layout',encoded())}
+    function updateLink(){const u=new URL(location.href);u.searchParams.set('p',encoded());link.value=u.href;localStorage.setItem('kalaku-mobile-layout-v2',encoded())}
     function apply(){
       nodes.forEach((node,i)=>{if(node){const [x,y]=state.offsets[i];node.style.transform=`translate3d(${x}px,${y}px,0)`}});
       if(nodes[2])nodes[2].style.fontSize=(baseTitleSize*state.size/100)+'px';
