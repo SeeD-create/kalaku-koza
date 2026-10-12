@@ -152,12 +152,12 @@
  .hero-variant-b.poster-v2 .hero-photo{height:570px;bottom:auto}
  .hero-variant-b.poster-v2 .hero-photo img{object-position:50% 0%}
  .hero-variant-b.poster-v2 .poster-hero-title{height:570px;padding:24px 27px}
- .hero-variant-b.poster-v2 .poster-eyebrow{font-size:10px;letter-spacing:.2em;position:relative;z-index:8;transform:translate3d(-5px,139px,0)}
- .hero-variant-b.poster-v2 .hero-kicker{margin:20px 0 0;position:relative;z-index:8;transform:translate3d(-8px,122px,0)}
+ .hero-variant-b.poster-v2 .poster-eyebrow{font-size:10px;letter-spacing:.2em;position:relative;z-index:8;transform:translate3d(-14px,1px,0)}
+ .hero-variant-b.poster-v2 .hero-kicker{margin:20px 0 0;position:relative;z-index:8;transform:translate3d(-15px,-16px,0)}
  .hero-variant-b.poster-v2 .hero .hero-lede{font-size:12px}
- .hero-variant-b.poster-v2 .hero h1{font-size:clamp(42px,12vw,58px);line-height:1.19;margin:15px 0 0;text-shadow:0 2px 3px #07170cde,0 6px 18px #07170ca8;position:relative;z-index:8;transform:translate3d(-15px,-57px,0)}
+ .hero-variant-b.poster-v2 .hero h1{font-size:clamp(44.1px,12.6vw,60.9px);line-height:1.19;margin:15px 0 0;text-shadow:0 2px 3px #07170cde,0 6px 18px #07170ca8;position:relative;z-index:8;transform:translate3d(-26px,-25px,0)}
  .hero-variant-b.poster-v2 .hero h1 em{ text-shadow:0 2px 3px #07170cde,0 6px 18px #07170ca8 }
- .hero-variant-b.poster-v2 .poster-rule{margin-top:24px;width:min(82vw,320px);position:relative;z-index:8;transform:translate3d(-8px,-71px,0)}
+ .hero-variant-b.poster-v2 .poster-rule{margin-top:24px;width:min(82vw,320px);position:relative;z-index:8;transform:translate3d(-20px,-45px,0)}
  .hero-variant-b.poster-v2 .poster-hero-details{display:block;background:#f7f3ec;color:#283d34;padding:27px 27px 37px}
  .hero-variant-b.poster-v2 .hero .hero-formula{color:#627069;font-size:clamp(10px,2.8vw,13px);gap:10px;text-shadow:none}
  .hero-variant-b.poster-v2 .hero .hero-lead{color:#46584d;margin:18px 0 0;font-size:13px;text-shadow:none}

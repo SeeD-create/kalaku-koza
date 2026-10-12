@@ -60,7 +60,8 @@
   (()=>{
     const names=['英字','短いコピー','大見出し','横線','植物の知識・調合・AI','説明文'];
     const selectors=['.poster-eyebrow','.hero-kicker','.hero h1','.poster-rule','.hero-formula','.hero-lead'];
-    const empty=()=>({offsets:[[-5,139],[-8,122],[-15,-57],[-8,-71],[0,0],[0,0]],sizes:names.map(()=>100)});
+    const productionSizes=[100,100,105,100,100,100];
+    const empty=()=>({offsets:[[-14,1],[-15,-16],[-26,-25],[-20,-45],[0,0],[0,0]],sizes:[...productionSizes]});
     const frame=document.querySelector('#preview');
     const parts=document.querySelector('#parts');
     const link=document.querySelector('#share-link');
@@ -81,9 +82,9 @@
       const sizes=n.length===13?[100,100,n[12],100,100,100]:n.slice(12);
       return {offsets:names.map((_,i)=>[Math.max(-180,Math.min(180,n[i*2])),Math.max(-350,Math.min(350,n[i*2+1]))]),sizes:sizes.map((x,i)=>Math.max(i===3?20:60,Math.min(i===3?130:160,x)))};
     }
-    state=parse(new URLSearchParams(location.search).get('p'))||parse(localStorage.getItem('kalaku-mobile-layout-v3'))||empty();
+    state=parse(new URLSearchParams(location.search).get('p'))||parse(localStorage.getItem('kalaku-mobile-layout-v4'))||empty();
     function encoded(){return [...state.offsets.flat().map(Math.round),...state.sizes].join(',')}
-    function updateLink(){const u=new URL(location.href);u.searchParams.set('p',encoded());link.value=u.href;localStorage.setItem('kalaku-mobile-layout-v3',encoded())}
+    function updateLink(){const u=new URL(location.href);u.searchParams.set('p',encoded());link.value=u.href;localStorage.setItem('kalaku-mobile-layout-v4',encoded())}
     function apply(){
       nodes.forEach((node,i)=>{if(node){const [x,y]=state.offsets[i];node.style.transform=`translate3d(${x}px,${y}px,0)`}});
       sizeNodes.forEach((node,i)=>{if(node&&i!==3)node.style.fontSize=(baseSizes[i]*state.sizes[i]/100)+'px'});
@@ -101,7 +102,7 @@
       doc.addEventListener('click',e=>{if(e.target.closest('a,button')){e.preventDefault();e.stopImmediatePropagation()}},true);
       nodes=selectors.map(s=>doc.querySelector(s));
       sizeNodes=[nodes[0],doc.querySelector('.hero .hero-lede'),nodes[2],null,nodes[4],nodes[5]];
-      baseSizes=sizeNodes.map(node=>node?parseFloat(frame.contentWindow.getComputedStyle(node).fontSize):0);
+      baseSizes=sizeNodes.map((node,i)=>node?parseFloat(frame.contentWindow.getComputedStyle(node).fontSize)/(productionSizes[i]/100):0);
       baseRuleWidth=nodes[3].getBoundingClientRect().width;
       nodes.forEach((node,i)=>{
         if(!node)return;
