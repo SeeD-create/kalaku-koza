@@ -133,9 +133,9 @@
 .hero-variant-b.poster-v2 .hero-copy{position:relative;z-index:2;width:100%;max-width:none;min-height:0;display:block;margin:0;padding:0;background:none!important}
 .hero-variant-b.poster-v2 .poster-hero-title{box-sizing:border-box;height:650px;padding:25px clamp(28px,6.8vw,100px);color:#fff}
 .hero-variant-b.poster-v2 .poster-eyebrow{display:block;font:500 12px/1.4 var(--sans);letter-spacing:.23em;color:#f0e9dc}
-.hero-variant-b.poster-v2 .hero-kicker{margin:0}
+.hero-variant-b.poster-v2 .hero-kicker{margin:12px 0 0}
 .hero-variant-b.poster-v2 .hero .hero-lede{font:400 15px/1.5 var(--sans);letter-spacing:.12em;color:#fff}
-.hero-variant-b.poster-v2 .hero h1{font-size:clamp(58px,6.7vw,90px);line-height:1.19;margin:18px 0 0;letter-spacing:-.07em;color:#fff;text-shadow:0 2px 8px #102018b8,0 6px 24px #10201870}
+.hero-variant-b.poster-v2 .hero h1{font-size:clamp(58px,6.7vw,90px);line-height:1.19;margin:6px 0 0;letter-spacing:-.07em;color:#fff;text-shadow:0 2px 8px #102018b8,0 6px 24px #10201870}
 .hero-variant-b.poster-v2 .hero h1 em{color:#f2b5c2;text-shadow:0 2px 8px #102018b8,0 6px 24px #10201870}
 .hero-variant-b.poster-v2 .poster-rule{display:block;width:min(40vw,520px);max-width:100%;height:2px;margin-top:20px;background:linear-gradient(90deg,#f0c2cc 0%,#f0c2cc 72%,#ffffff55 100%)}
 .hero-variant-b.poster-v2 .poster-hero-details{position:relative;z-index:3;background:#f7f3ec;color:#283d34;padding:34px clamp(28px,6.8vw,100px) 39px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,390px);column-gap:36px;align-items:center}
@@ -153,9 +153,9 @@
  .hero-variant-b.poster-v2 .hero-photo img{object-position:50% 0%}
  .hero-variant-b.poster-v2 .poster-hero-title{height:570px;padding:31px 27px}
  .hero-variant-b.poster-v2 .poster-eyebrow{font-size:10px;letter-spacing:.2em}
- .hero-variant-b.poster-v2 .hero-kicker{margin:34px 0 0}
+ .hero-variant-b.poster-v2 .hero-kicker{margin:24px 0 0}
  .hero-variant-b.poster-v2 .hero .hero-lede{font-size:12px}
- .hero-variant-b.poster-v2 .hero h1{font-size:clamp(42px,12vw,58px);line-height:1.19;margin:13px 0 0}
+ .hero-variant-b.poster-v2 .hero h1{font-size:clamp(42px,12vw,58px);line-height:1.19;margin:23px 0 0}
  .hero-variant-b.poster-v2 .poster-rule{margin-top:24px;width:min(82vw,320px)}
  .hero-variant-b.poster-v2 .poster-hero-details{display:block;padding:27px 27px 37px}
  .hero-variant-b.poster-v2 .hero .hero-formula{font-size:clamp(10px,2.8vw,13px);gap:10px}
