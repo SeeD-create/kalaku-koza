@@ -33,7 +33,7 @@
   const notes = [...document.querySelectorAll('#line-status, #line-status-2, #line-status-3')];
    
   const sayNear = (el, text) => {
-    const near = el.closest('.sticky, .hero-copy, .signup-grid > div, .signup') || document;
+    const near = el.closest('.sticky, .hero-copy, .signup-grid > div, .signup, .movie') || document;
     const own = near.querySelector('.status');
     (own ? [own] : notes).forEach(n => { n.textContent = text; });
   };
@@ -67,28 +67,6 @@
   });
 
    
-  const vimeo = String(config.VIMEO_ID || '').trim();
-  const frame = document.getElementById('movie-frame');
-  const movieNote = document.getElementById('movie-status');
-  document.querySelectorAll('[data-movie-action]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (!/^\d+$/.test(vimeo)) {
-        if (movieNote) movieNote.textContent = '講座説明動画は準備中です。公開まで少々お待ちください。';
-        return;
-      }
-      if (!frame || !frame.hidden) return;
-      const iframe = document.createElement('iframe');
-      iframe.src = 'https://player.vimeo.com/video/' + vimeo + '?autoplay=1&dnt=1';
-      iframe.title = '講座説明動画';
-      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-      iframe.allowFullscreen = true;
-      frame.appendChild(iframe);
-      frame.hidden = false;
-      frame.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-  });
-
-
    
   const sticky = document.querySelector('.sticky');
   const heroCta = document.querySelector('.hero-copy .actions');
